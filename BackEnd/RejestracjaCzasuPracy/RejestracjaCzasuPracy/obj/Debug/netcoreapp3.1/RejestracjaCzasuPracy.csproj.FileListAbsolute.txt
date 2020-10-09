@@ -1,4 +1,0 @@
-C:\Repos\Rejestracja-Czasu-Pracy\BackEnd\RejestracjaCzasuPracy\RejestracjaCzasuPracy\bin\Debug\netcoreapp3.1\RejestracjaCzasuPracy.exe
-C:\Repos\Rejestracja-Czasu-Pracy\BackEnd\RejestracjaCzasuPracy\RejestracjaCzasuPracy\obj\Debug\netcoreapp3.1\RejestracjaCzasuPracy.csprojAssemblyReference.cache
-C:\Repos\Rejestracja-Czasu-Pracy\BackEnd\RejestracjaCzasuPracy\RejestracjaCzasuPracy\obj\Debug\netcoreapp3.1\RejestracjaCzasuPracy.AssemblyInfoInputs.cache
-C:\Repos\Rejestracja-Czasu-Pracy\BackEnd\RejestracjaCzasuPracy\RejestracjaCzasuPracy\obj\Debug\netcoreapp3.1\RejestracjaCzasuPracy.AssemblyInfo.cs
