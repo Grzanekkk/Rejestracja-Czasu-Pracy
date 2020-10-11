@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using DatabaseConnection;
 
 namespace RejestracjaCzasuPracy.Controllers
 {
@@ -40,5 +41,11 @@ namespace RejestracjaCzasuPracy.Controllers
                 }
             }
         }
+
+        public class ShowUser
+        {
+            User newUser = new User(Guid.NewGuid().ToString(), "Micha³", "TajneHas³o123!XD");   // dll works! NICE
+        }
+           
     }
 }

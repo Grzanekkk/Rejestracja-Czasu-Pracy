@@ -6,19 +6,19 @@ using Microsoft.Data.SqlClient;
 
 namespace DatabaseConnection        // Class used to execute commands and connect to database
 {
-    public class DBAccess
+    public static class DBAccess
     {
         private static SqlConnection connection = new SqlConnection();
         private static SqlCommand command = new SqlCommand();
         private static SqlDataAdapter adapter = new SqlDataAdapter();
-        public SqlTransaction dbTran;
+        public static SqlTransaction dbTran;
 
-        private static string connectionString = "Data Source=(local);Initial Catalog=RejestracjaCzasuPracy;Integrated Security=True";
+        private static string connectionString = "Data Source=JASIO1\\JANEKSQL;Initial Catalog=RejestracjaCzasuPracy;Integrated Security=True";
 
 
         #region Connection Managment
 
-        public void CreateConnection()
+        public static void CreateConnection()
         {
             try
             {
@@ -35,7 +35,7 @@ namespace DatabaseConnection        // Class used to execute commands and connec
         }
 
 
-        public void CloseConnection()
+        public static void CloseConnection()
         {
             connection.Close();
         }
@@ -43,7 +43,7 @@ namespace DatabaseConnection        // Class used to execute commands and connec
         #endregion Connection Managment
 
 
-        public int ExecuteDataAdapter(DataTable tblName, string strSelectSql)
+        public static int ExecuteDataAdapter(DataTable tblName, string strSelectSql)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace DatabaseConnection        // Class used to execute commands and connec
         }
 
 
-        public void ReadDataThroughAdapter(string query, DataTable tblName)
+        public static void ReadDataThroughAdapter(string query, DataTable tblName)
         {
             try
             {
@@ -94,7 +94,7 @@ namespace DatabaseConnection        // Class used to execute commands and connec
         }
 
 
-        public SqlDataReader ReadDataThroughReader(string query)
+        public static SqlDataReader ReadDataThroughReader(string query)
         {
             //DataReader used to sequentially read data from a data source
             SqlDataReader reader;
@@ -120,7 +120,7 @@ namespace DatabaseConnection        // Class used to execute commands and connec
         }
 
 
-        public int ExecuteQuery(SqlCommand dbCommand)
+        public static int ExecuteQuery(SqlCommand dbCommand)
         {
             try
             {
