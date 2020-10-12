@@ -10,7 +10,7 @@ namespace DatabaseConnection
         public string id, name, password;
 
         static string query;
-        static DataTable dtUsers = new DataTable();
+        static DataTable dataTable = new DataTable();
 
 
         #region Constructors
@@ -35,19 +35,19 @@ namespace DatabaseConnection
 
         public static User GetUserWithNameAndPassword(string name, string password)
         {
-            dtUsers = new DataTable();
+            dataTable = new DataTable();
 
             query = $"Select * from Users Where Name = '{name}' AND Password = '{password}'";
 
-            DBAccess.ReadDataThroughAdapter(query, dtUsers);
+            DBAccess.ReadDataThroughAdapter(query, dataTable);
 
-            if (dtUsers.Rows.Count == 1)
+            if (dataTable.Rows.Count == 1)
             {
                 User currentUser = new User
                 (
-                    dtUsers.Rows[0]["ID"].ToString(),
-                    dtUsers.Rows[0]["Name"].ToString(),
-                    dtUsers.Rows[0]["Password"].ToString()
+                    dataTable.Rows[0]["ID"].ToString(),
+                    dataTable.Rows[0]["Name"].ToString(),
+                    dataTable.Rows[0]["Password"].ToString()
                 );
 
                 return currentUser;
@@ -60,18 +60,18 @@ namespace DatabaseConnection
 
         public static User GetUserWithName(string name)
         {
-            dtUsers = new DataTable();
+            dataTable = new DataTable();
 
             query = $"Select * from Users Where Name = '{name}'";
 
-            DBAccess.ReadDataThroughAdapter(query, dtUsers);
+            DBAccess.ReadDataThroughAdapter(query, dataTable);
 
             if (true) // dtUsers.Rows.Count == 1
             {
                 User currentUser = new User
                 (
-                    dtUsers.Rows[0]["ID"].ToString(),
-                    dtUsers.Rows[0]["Name"].ToString()
+                    dataTable.Rows[0]["ID"].ToString(),
+                    dataTable.Rows[0]["Name"].ToString()
                 );
 
                 return currentUser;
@@ -84,20 +84,20 @@ namespace DatabaseConnection
 
         public static List<User> GetAllUsers()
         {
-            dtUsers = new DataTable();
+            dataTable = new DataTable();
 
             List<User> listOfAllUsers = new List<User>();
             query = $"Select * from Users";
 
-            DBAccess.ReadDataThroughAdapter(query, dtUsers);
+            DBAccess.ReadDataThroughAdapter(query, dataTable);
 
             int i = 0;
-            foreach(DataRow row in dtUsers.Rows)
+            foreach(DataRow row in dataTable.Rows)
             {
                 User user = new User
                 (
-                    dtUsers.Rows[i]["ID"].ToString(),
-                    dtUsers.Rows[i]["Name"].ToString()
+                    dataTable.Rows[i]["ID"].ToString(),
+                    dataTable.Rows[i]["Name"].ToString()
                 );
 
                 listOfAllUsers.Add(user);
@@ -105,6 +105,17 @@ namespace DatabaseConnection
             }
 
             return listOfAllUsers;
+        }
+
+        public static DataTable GetAllUserEvents(string userID)
+        {
+            dataTable = new DataTable();
+
+            query = $"SELECT Date, MinutesToCatchUp, UserID from Events Where UserID = '{userID}'";
+
+            DBAccess.ReadDataThroughAdapter(query, dataTable);
+
+            return dataTable;
         }
     }
 }
