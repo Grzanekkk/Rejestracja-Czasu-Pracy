@@ -12,6 +12,9 @@ namespace DatabaseConnection
         static string query;
         static DataTable dataTable = new DataTable();
 
+        public DateTime startWorkHour;
+        public DateTime finishWorkHour;
+
 
         #region Constructors
 
@@ -21,12 +24,18 @@ namespace DatabaseConnection
             id = _id;
             name = _name;
             password = _password;
+
+            startWorkHour = DateTime.Today.AddHours(9);
+            finishWorkHour = startWorkHour.AddHours(8);
         }
 
         public User(string _id, string _name)
         {
             id = _id;
             name = _name;
+
+            startWorkHour = DateTime.Today.AddHours(9);
+            finishWorkHour = startWorkHour.AddHours(8);
         }
 
 
@@ -45,7 +54,7 @@ namespace DatabaseConnection
             {
                 User currentUser = new User
                 (
-                    dataTable.Rows[0]["ID"].ToString(),
+                    dataTable.Rows[0]["UserID"].ToString(),
                     dataTable.Rows[0]["Name"].ToString(),
                     dataTable.Rows[0]["Password"].ToString()
                 );
@@ -70,7 +79,7 @@ namespace DatabaseConnection
             {
                 User currentUser = new User
                 (
-                    dataTable.Rows[0]["ID"].ToString(),
+                    dataTable.Rows[0]["UserID"].ToString(),
                     dataTable.Rows[0]["Name"].ToString()
                 );
 
@@ -96,7 +105,7 @@ namespace DatabaseConnection
             {
                 User user = new User
                 (
-                    dataTable.Rows[i]["ID"].ToString(),
+                    dataTable.Rows[i]["UserID"].ToString(),
                     dataTable.Rows[i]["Name"].ToString()
                 );
 

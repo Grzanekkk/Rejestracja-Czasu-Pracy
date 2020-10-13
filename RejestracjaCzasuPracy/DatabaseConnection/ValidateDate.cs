@@ -56,5 +56,19 @@ namespace DatabaseConnection
             }
         }
 
+        public static bool CheckWorkHours(DateTime startDate, DateTime finishtDate)
+        {
+            TimeSpan workTime = finishtDate - startDate;
+
+            if (workTime.TotalHours != 8)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
     }
 }

@@ -51,6 +51,17 @@ namespace DatabaseConnection
 
             return minutesToCatchUp;
         }
+
+        public static int GoHome(User currentUser)
+        {
+            TimeSpan timeSpan = DateTime.Now - currentUser.finishWorkHour;
+
+            int minutesToCatchUp = Convert.ToInt32(timeSpan.TotalMinutes);
+
+            // AddNewEvent(currentUser.id, minutesToCatchUp);
+
+            return minutesToCatchUp;
+        }
     }
 
 }
