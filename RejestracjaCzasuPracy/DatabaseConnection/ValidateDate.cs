@@ -9,6 +9,7 @@ namespace DatabaseConnection
     public static class ValidateDate        // Class used to Validate login data like name, password, email
     {
         static DataTable dtValidate = new DataTable();
+        static DBAccess dbAccess = new DBAccess();
 
         public static bool NamePassword(string name, string password)
         {
@@ -16,7 +17,7 @@ namespace DatabaseConnection
             {
                 return false;
             }
-            else if (!Name(name))
+            else if (!CheckIfNameAlreadyExist(name))
             {
                 return false;
             }
@@ -36,11 +37,11 @@ namespace DatabaseConnection
             }
         }
 
-        public static bool Name(string name)
+        public static bool CheckIfNameAlreadyExist(string name)
         {
             string query = $"Select * from Users Where Name = '{name}'";
 
-            DBAccess.ReadDataThroughAdapter(query, dtValidate);
+            dbAccess.ReadDataThroughAdapter(query, dtValidate);
 
             if (dtValidate.Rows.Count != 0)
             {
