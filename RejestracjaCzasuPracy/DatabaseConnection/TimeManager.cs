@@ -68,7 +68,7 @@ namespace DatabaseConnection
         {
             TimeSpan timeSpan = DateTime.Now - currentUser.finishWorkHour;
 
-            int minutesToCatchUp = Convert.ToInt32(timeSpan.TotalMinutes);
+            int minutesToCatchUp = Convert.ToInt32(timeSpan.TotalMinutes) * -1;
 
             return minutesToCatchUp;
         }
@@ -111,7 +111,8 @@ namespace DatabaseConnection
             dataTable = new DataTable();
             int minutes = GetMinutesOfWorkSinceStart(memberID);
 
-            minutes -= 480 + GetUserMinutesOnBreak(memberID); // 8 hours, odejmujemy 8 godzin oraz czas spędzony na przerwie aby sprawdzić różnice i dodać reszte do nadrobienia
+            minutes -= (480 + GetUserMinutesOnBreak(memberID)); // 8 hours, odejmujemy 8 godzin oraz czas spędzony na przerwie aby sprawdzić różnice i dodać reszte do nadrobienia
+            minutes = minutes * -1;
 
             dataTable.Rows[0]["MinutesToCatchUp"] = minutes;
 

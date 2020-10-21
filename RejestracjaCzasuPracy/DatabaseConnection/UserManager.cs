@@ -45,7 +45,7 @@ namespace DatabaseConnection
 
             dbAccess.ReadDataThroughAdapter(query, dataTable);
 
-            if (true) // dtUsers.Rows.Count == 1
+            if (dataTable.Rows.Count == 1)
             {
                 User currentUser = new User
                 (
