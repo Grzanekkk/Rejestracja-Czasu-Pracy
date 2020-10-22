@@ -17,5 +17,10 @@ namespace RejestracjaCzasuPracy.Controllers
         {
             return $"User with id = {id}";
         }
+
+        public string EmailOwner(string name, string email)
+        {
+            return $"{email} belongs to {name}";
+        }
     }
 }
