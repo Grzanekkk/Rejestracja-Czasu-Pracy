@@ -10,6 +10,12 @@ namespace RejestracjaCzasuPracy.Controllers
     [Route("api/[controller]")]
     public class SampleDataController : Controller
     {
+        public ActionResult Details()
+        {
+            return View();
+        }
+
+
         private static string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
