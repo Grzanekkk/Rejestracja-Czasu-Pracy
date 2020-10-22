@@ -2,26 +2,17 @@
 import { Redirect } from 'react-router-dom'
 
 export class Login extends Component {
-    state = {
-        loggedIn: false
-    }
+	constructor(props) {
+		super(props);
+		this.handleFormSubmit = this.handleFormSubmit.bind(this);
+	}
 
     handleFormSubmit = (e) => {
-        e.preventDefault();
-        if(!this.state.loggedIn) {
-            localStorage.setItem("token", "x")
-            this.setState({
-                loggedIn: true,
-            })
-        }
+		e.preventDefault();
+		this.props.onLoggIn("Jan Puto");
     }
 
     render() {
-        const { loggedIn } = this.state;
-        if(loggedIn) {
-            return <Redirect to ="/admin"/>
-            // return <Admin/>
-        }
         return (
             <div>
                 <h1>Sign In</h1>

@@ -11,21 +11,30 @@ import { Link, Switch, Route} from 'react-router-dom';
 
 
 export default class App extends Component {
-  displayName = App.name
+	constructor(props) {
+		super(props);
+		this.state = {
+			isLogged: false,
+			content: ''
+		}
+		this.onLoggIn = this.onLoggIn.bind(this);
+	}
+	onLoggIn(token) {
+		this.setState({
+			isLogged: true,
+			content: <Admin token={token} />
+		});
+	}
 
-  render() {
-    return (
-      <Switch>
-        {/* <Route exact path='/' component={Home} />
-        <Route path='/counter' component={Counter} />
-        <Route path='/fetchdata' component={FetchData} /> */}
-        <Route path='/login' component={Login} />
-        <Route path='/admin' component={Admin} />
-        <Route path='/logout' component={Logout} />
-      </Switch>
-      // <Layout>
-      //   <Login/>
-      // </Layout>
-    );
-  }
+	render() {
+		if (this.state.isLogged) {
+			return (
+				this.state.content
+			);
+		} else {
+			return (
+				<Login onLoggIn={this.onLoggIn}/>
+			);
+		}
+	}
 }

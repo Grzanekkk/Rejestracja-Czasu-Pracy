@@ -22,8 +22,8 @@ export default class Admin extends Component {
             return <Redirect to="/logout"/>
         }
         return (
-            <div>
-                <h1>Admin page</h1>
+			<div>
+				<h1>Witaj {this.props.token}</h1>
                 <Link to="/logout">Logout</Link>
             </div>
         )
