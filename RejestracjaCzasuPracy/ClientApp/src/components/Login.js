@@ -9,6 +9,7 @@ export class Login extends Component {
     handleFormSubmit = (e) => {
         e.preventDefault();
         if(!this.state.loggedIn) {
+            localStorage.setItem("token", "x")
             this.setState({
                 loggedIn: true,
             })
@@ -19,6 +20,7 @@ export class Login extends Component {
         const { loggedIn } = this.state;
         if(loggedIn) {
             return <Redirect to ="/admin"/>
+            // return <Admin/>
         }
         return (
             <div>
