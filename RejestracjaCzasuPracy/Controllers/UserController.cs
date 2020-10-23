@@ -7,21 +7,29 @@ using DatabaseConnection;
 
 namespace RejestracjaCzasuPracy.Controllers
 {
+    [Route("api/[controller]")]
     public class UserController : Controller
     {
         UserManager userManager = new UserManager();
-        User currentUser;
-
-        public string GetAllUSers()
+       
+        [HttpGet("[action]")]
+        public ActionResult GetAllUSers()
         {
-            return "All users"; 
+            var users = userManager.GetAllUsers();
+
+            if (users != null)
+                return Ok(users);
+            return BadRequest();
         }
 
-        public string GetUser(string memberID)
+        [HttpGet("[action]")]
+        public ActionResult GetUser(string memberID)
         {
-            currentUser = userManager.GetUserWithID(memberID);
+            User currnetUser = userManager.GetUserWithID(memberID);
 
-            return $"{currentUser.firstName} {currentUser.surName}";
+            if (currnetUser != null)
+                return Ok(currnetUser);
+            return BadRequest();
         }
 
         public string EmailOwner(string name, string email)
