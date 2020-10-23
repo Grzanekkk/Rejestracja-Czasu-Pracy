@@ -6,47 +6,35 @@ import { Home } from './components/Home';
 // import { Counter } from './components/Counter';
 import { Login } from './components/Login';
 import Admin from './components/Admin';
+import Logout from './components/Logout';
+import { Link, Switch, Route} from 'react-router-dom';
 
 
 export default class App extends Component {
-<<<<<<< Updated upstream
-  displayName = App.name
-=======
 	constructor(props) {
 		super(props);
 		this.state = {
 			isLogged: false,
-			content: '',
-			
+			content: ''
 		}
+		this.onLoggIn = this.onLoggIn.bind(this);
 	}
-	onLoggIn = user => {
+	onLoggIn(token) {
 		this.setState({
 			isLogged: true,
-			content: <Admin user={user} onLoggOut={this.onLoggOut} />
+			content: <Admin token={token} />
 		});
 	}
-	onLoggOut = () => {
-		this.setState({
-			isLogged: false,
-			content: ''
-		});
-	}
->>>>>>> Stashed changes
 
-  render() {
-    return (
-      <Switch>
-        {/* <Route exact path='/' component={Home} />
-        <Route path='/counter' component={Counter} />
-        <Route path='/fetchdata' component={FetchData} /> */}
-        <Route path='/login' component={Login} />
-        <Route path='/admin' component={Admin} />
-        <Route path='/logout' component={Logout} />
-      </Switch>
-      // <Layout>
-      //   <Login/>
-      // </Layout>
-    );
-  }
+	render() {
+		if (this.state.isLogged) {
+			return (
+				this.state.content
+			);
+		} else {
+			return (
+				<Login onLoggIn={this.onLoggIn}/>
+			);
+		}
+	}
 }
