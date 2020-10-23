@@ -6,12 +6,33 @@ import { Home } from './components/Home';
 // import { Counter } from './components/Counter';
 import { Login } from './components/Login';
 import Admin from './components/Admin';
-import Logout from './components/Logout';
-import { Link, Switch, Route} from 'react-router-dom';
 
 
 export default class App extends Component {
+<<<<<<< Updated upstream
   displayName = App.name
+=======
+	constructor(props) {
+		super(props);
+		this.state = {
+			isLogged: false,
+			content: '',
+			
+		}
+	}
+	onLoggIn = user => {
+		this.setState({
+			isLogged: true,
+			content: <Admin user={user} onLoggOut={this.onLoggOut} />
+		});
+	}
+	onLoggOut = () => {
+		this.setState({
+			isLogged: false,
+			content: ''
+		});
+	}
+>>>>>>> Stashed changes
 
   render() {
     return (
