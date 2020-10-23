@@ -10,6 +10,7 @@ export class Login extends Component {
         this.state = {
             userName: '',
             isSelected: true,
+            users: '',
         }
     }
 
@@ -22,9 +23,25 @@ export class Login extends Component {
     handleUserChange = (e) => {
         this.setState({
             userName: e.target.value,
-        })}
+        })
+    }
+
+    updateUserSelect() {
+		fetch('/api/User/GetAllUSers')
+			.then(res => res.json())
+			.then(data =>
+				this.setState({
+					users: data
+				})
+			);
+    }
+    
+    componentDidMount() {
+		this.updateUserSelect();
+	}
 
     render() {
+        console.log(this.state.users)
         return (
             <div>
                 <h1>Sign In</h1>
