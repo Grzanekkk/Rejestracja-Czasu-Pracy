@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-// import { Route } from 'react-router';
-import { Layout } from './components/Layout';
-import { Home } from './components/Home';
-// import { FetchData } from './components/FetchData';
-// import { Counter } from './components/Counter';
 import { Login } from './components/Login';
 import Admin from './components/Admin';
-import Logout from './components/Logout';
-import { Link, Switch, Route} from 'react-router-dom';
+
 
 
 export default class App extends Component {
@@ -15,14 +9,20 @@ export default class App extends Component {
 		super(props);
 		this.state = {
 			isLogged: false,
-			content: ''
+			content: '',
+			
 		}
-		this.onLoggIn = this.onLoggIn.bind(this);
 	}
-	onLoggIn(token) {
+	onLoggIn = user => {
 		this.setState({
 			isLogged: true,
-			content: <Admin token={token} />
+			content: <Admin user={user} onLoggOut={this.onLoggOut} />
+		});
+	}
+	onLoggOut = () => {
+		this.setState({
+			isLogged: false,
+			content: ''
 		});
 	}
 
