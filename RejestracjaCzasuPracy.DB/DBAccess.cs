@@ -2,6 +2,7 @@
 using System.Data;
 using Microsoft.Data.SqlClient;
 using System.Configuration;
+using Microsoft.Extensions.Configuration;
 
 //  Microsoft.Data.SqlClient NuGet packet requiered 
 
@@ -12,6 +13,7 @@ namespace DatabaseConnection        // Class used to execute commands and connec
         private SqlCommand command = new SqlCommand();
         private SqlDataAdapter adapter = new SqlDataAdapter();
         private SqlConnection connection = new SqlConnection();
+        private IConfiguration configuration;
 
 
         #region Connection Managment
@@ -22,11 +24,13 @@ namespace DatabaseConnection        // Class used to execute commands and connec
             {
                 if (connection.State != ConnectionState.Open)
                 {
-                    ConnectionStringSettings setting = ConfigurationManager.ConnectionStrings["MainConnection"];
-                    SqlConnectionStringBuilder build = new SqlConnectionStringBuilder(setting.ConnectionString);
-                    connection = new SqlConnection(setting.ConnectionString);
+                    //ConnectionStringSettings setting = ConfigurationManager.ConnectionStrings[configuration.GetConnectionString("DPKSystemDB")];
+                    //ConnectionStringSettings setting = ConfigurationManager.ConnectionStrings[];
+                    //SqlConnectionStringBuilder build = new SqlConnectionStringBuilder(setting.ConnectionString);
+                    //connection = new SqlConnection(setting.ConnectionString);
 
-                    connection.ConnectionString = setting.ConnectionString;
+                    //connection.ConnectionString = setting.ConnectionString;
+                    connection.ConnectionString = "Data Source = JASIO1\\JANEKSQL; Initial Catalog = DPKSystem; Integrated Security = True";
                     connection.Open();
                 }
             }
