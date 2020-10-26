@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using System.Runtime;
 
 namespace DatabaseConnection
 {
@@ -25,13 +26,18 @@ namespace DatabaseConnection
         }
 
         public User GetUserWithID(string memberID)
-        {
-            dataTable = new DataTable();
-            query = $"SELECT * from CRMember Where MemberID = '{memberID}'";
+        {      
+            if (!String.IsNullOrEmpty(memberID))
+            {
+                dataTable = new DataTable();
+                query = $"SELECT * from CRMember Where MemberID = '{memberID}'";
 
-            dbAccess.ReadDataThroughAdapter(query, dataTable);
+                dbAccess.ReadDataThroughAdapter(query, dataTable);
 
-            return CreateNewUserFromDataBase(dataTable);    // can be null
+                return CreateNewUserFromDataBase(dataTable);    // can be null
+            }
+
+            return null;
         }
 
         public List<User> GetAllUsers()
