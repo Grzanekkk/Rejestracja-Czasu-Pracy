@@ -20,7 +20,7 @@ export class Login extends Component {
         e.preventDefault();
         
 		if (this.state.userName) {
-            // this.props.onLoggIn(this.state.currentUser); 
+            this.props.onLoggIn(this.state.onLoggIn); 
             // this.props.getCurrentUserToAdmin(this.state.currentUser);
             this.sendUserId(); 
         }

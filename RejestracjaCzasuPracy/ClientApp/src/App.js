@@ -12,12 +12,12 @@ export default class App extends Component {
 			content: '',
 		}
 	}
-	// onLoggIn = currentUser => {
-	// 	this.setState({
-	// 		isLogged: true,
-	// 		content: <Admin user={currentUser} onLoggOut={this.onLoggOut} />
-	// 	});
-	// }
+	onLoggIn = currentUser => {
+		this.setState({
+			isLogged: true,
+			content: <Admin user={currentUser} onLoggOut={this.onLoggOut} />
+		});
+	}
 	onLoggOut = () => {
 		this.setState({
 			isLogged: false,
@@ -35,8 +35,8 @@ export default class App extends Component {
 	render() {
 		if (this.state.isLogged) {
 			return (
-				// this.state.content
-				<Login onLoggIn={this.onLoggIn} />
+				this.state.content
+				// <Login onLoggIn={this.onLoggIn} />
 			);
 		} else {
 			return (
