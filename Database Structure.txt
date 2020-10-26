@@ -1,0 +1,65 @@
+===================================================== Users
+
+USE [DPKSystem]
+GO
+
+/****** Object:  Table [dbo].[CRMember]    Script Date: 23.10.2020 15:31:04 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CRMember](
+	[MemberID] [uniqueidentifier] NOT NULL,
+	[FirstName] [nvarchar](50) NOT NULL,
+	[SurName] [nvarchar](50) NOT NULL,
+	[InsDate] [datetime] NOT NULL,
+	[InsUser] [nvarchar](50) NOT NULL,
+	[ChangeDate] [datetime] NULL,
+	[ChangeUser] [nvarchar](50) NULL,
+	[IsActive] [bit] NOT NULL,
+ CONSTRAINT [PK_CRMember] PRIMARY KEY NONCLUSTERED 
+(
+	[MemberID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+==================================== Events
+
+USE [DPKSystem]
+GO
+
+/****** Object:  Table [dbo].[Events]    Script Date: 23.10.2020 17:31:53 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Events](
+	[EventID] [uniqueidentifier] NOT NULL,
+	[Date] [datetime] NOT NULL,
+	[MinutesToCatchUp] [int] NULL,
+	[MemberID] [uniqueidentifier] NOT NULL,
+	[BreakTime] [int] NULL,
+	[BeginningOfTheLatestBreak] [datetime] NULL,
+ CONSTRAINT [PK_Events] PRIMARY KEY CLUSTERED 
+(
+	[EventID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Events]  WITH CHECK ADD  CONSTRAINT [FK_Events_Users] FOREIGN KEY([MemberID])
+REFERENCES [dbo].[CRMember] ([MemberID])
+GO
+
+ALTER TABLE [dbo].[Events] CHECK CONSTRAINT [FK_Events_Users]
+GO
+
+
+
+
+

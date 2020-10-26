@@ -7,7 +7,7 @@ namespace DatabaseConnection
 {
     public class User
     {
-        public string id, name, firstName, surName, password;
+        public string id, name, firstName, surName;
 
         public DateTime startWorkHour;
         public DateTime finishWorkHour;

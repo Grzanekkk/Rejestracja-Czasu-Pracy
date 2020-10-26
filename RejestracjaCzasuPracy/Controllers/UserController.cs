@@ -15,10 +15,10 @@ namespace RejestracjaCzasuPracy.Controllers
         [HttpGet("[action]")]
         public ActionResult GetAllUSers()
         {
-            var users = userManager.GetAllUsers();
+            List<User> allUsers = userManager.GetAllUsers();
 
-            if (users != null)
-                return Ok(users);
+            if (allUsers != null)
+                return Ok(allUsers);
             return BadRequest();
         }
 
@@ -30,11 +30,6 @@ namespace RejestracjaCzasuPracy.Controllers
             if (currnetUser != null)
                 return Ok(currnetUser);
             return BadRequest();
-        }
-
-        public string EmailOwner(string name, string email)
-        {
-            return $"{email} belongs to {name}";
         }
     }
 }
