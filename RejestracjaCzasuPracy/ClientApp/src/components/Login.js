@@ -18,10 +18,11 @@ export class Login extends Component {
 
     handleFormSubmit = (e) => {
         e.preventDefault();
-        this.sendUserId();
+        
 		if (this.state.userName) {
             // this.props.onLoggIn(this.state.currentUser); 
-            // this.props.getCurrentUserToAdmin(this.state.currentUser); 
+            // this.props.getCurrentUserToAdmin(this.state.currentUser);
+            this.sendUserId(); 
         }
         else return this.setState({isSelected: false})
         
