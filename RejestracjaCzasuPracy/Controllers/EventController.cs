@@ -16,6 +16,7 @@ namespace RejestracjaCzasuPracy.Controllers
         public ActionResult GetAllUserEvents(string memberID)
         {
             userManager.GetUserEvents(memberID);
+            return null;
         }
     }
 }

@@ -11,30 +11,6 @@ namespace DatabaseConnection
         DataTable dataTable = new DataTable();
         DBAccess dbAccess = new DBAccess();
 
-        //public User GetUserWithNameAndPassword(string name, string password)
-        //{
-        //    dataTable = new DataTable();
-
-        //    query = $"Select * from CRMember Where Name = '{name}' AND Password = '{password}'";
-
-        //    dbAccess.ReadDataThroughAdapter(query, dataTable);
-
-        //    if (dataTable.Rows.Count == 1)
-        //    {
-        //        User currentUser = new User
-        //        (
-        //            dataTable.Rows[0]["MemberID"].ToString(),
-        //            dataTable.Rows[0]["Name"].ToString(),
-        //            dataTable.Rows[0]["Password"].ToString()
-        //        );
-
-        //        return currentUser;
-        //    }
-        //    else
-        //    {
-        //        return null;    // DO ZMIANY !!!!!!!!!!!!!!!!!!
-        //    }
-        //}
 
         public User GetUserWithName(string name)
         {
