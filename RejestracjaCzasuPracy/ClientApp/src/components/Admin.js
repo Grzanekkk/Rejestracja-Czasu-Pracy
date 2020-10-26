@@ -5,9 +5,10 @@ export class Admin extends Component {
 
     }
     render() {
+        // console.log(this.props.user)
         return (
 			<div>
-				<h1>Welcome to your profile {this.props.user}</h1>
+				<h1>Welcome to your profile {this.props.user}</h1> 
                 <h2>Your Minutes to catch up</h2>
                 <h2>...</h2>
                 <h2>Work hours</h2>

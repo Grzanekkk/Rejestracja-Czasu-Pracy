@@ -11,24 +11,30 @@ export class Login extends Component {
             userName: '',
             isSelected: true,
             users: '',
+            currentUser:'',
             choosenId: '',
         }
     }
 
     handleFormSubmit = (e) => {
-		e.preventDefault();
-		if (this.state.userName) this.props.onLoggIn(this.state.userName);
+        e.preventDefault();
+        this.sendUserId();
+		if (this.state.userName) {
+            // this.props.onLoggIn(this.state.currentUser); 
+            // this.props.getCurrentUserToAdmin(this.state.currentUser); 
+        }
         else return this.setState({isSelected: false})
+        
     }
 
     handleGetId = () => {
         this.state.users.filter(user => {
             if (user.name === this.state.userName) {
-                // console.log(user.id)
                 return (
                     this.setState({
                         choosenId: user.id,
                     })
+                    
                 )
             } else return null
         })  
@@ -50,22 +56,22 @@ export class Login extends Component {
             );
     }
 
-    // updateUserSelect() {
-	// 	fetch('/api/User/GetUser?memberID=')
-	// 		.then(res => res.json())
-	// 		.then(data =>
-	// 			this.setState({
-	// 				users: data
-	// 			})
-    //         );
-    // }
+    sendUserId() {
+        console.log(this.state.choosenId)
+		fetch('/api/User/GetUser?memberID=' + this.state.choosenId)
+            .then(res => res.json())
+			.then(data =>
+				this.setState({
+					currentUser: data
+				})
+            );
+    }
     
     componentDidMount() {
-		this.updateUserSelect();
+        this.updateUserSelect();
 	}
-
+    
     render() {
-        console.log(this.state.choosenId)
         const { users } = this.state;
         const items = [];
         for (let i = 0; i < users.length; ++i) {
@@ -83,6 +89,7 @@ export class Login extends Component {
                     <br/>
                     <button type="submit" onClick={this.handleGetId}>Log in</button> 
                     {this.state.isSelected ? null : <ValidationMessage text="User is not selected"/> }
+                    {/* {this.state.currentUser !== "" ? this.props.getCurrentUserToAdmin(this.state.currentUser) : null} */}
                 </form>
             </div>
         )
