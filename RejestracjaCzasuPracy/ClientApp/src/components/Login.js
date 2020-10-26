@@ -4,62 +4,93 @@ const ValidationMessage = props => {
     return <p>{props.text}</p>
 }
 
-const Options = props => {
-    console.log(props)
-    return null
-}
-
-
 export class Login extends Component {
 	constructor(props) {
         super(props);
         this.state = {
-            // userName: '',
+            userName: '',
             isSelected: true,
             users: '',
+            currentUser:'',
+            choosenId: '',
         }
     }
 
     handleFormSubmit = (e) => {
-		e.preventDefault();
-		if (this.state.userName) this.props.onLoggIn(this.state.userName);
+        e.preventDefault();
+        
+		if (this.state.userName) {
+            // this.props.onLoggIn(this.state.currentUser); 
+            // this.props.getCurrentUserToAdmin(this.state.currentUser);
+            this.sendUserId(); 
+        }
         else return this.setState({isSelected: false})
+        
     }
+
+    handleGetId = () => {
+        this.state.users.filter(user => {
+            if (user.name === this.state.userName) {
+                return (
+                    this.setState({
+                        choosenId: user.id,
+                    })
+                    
+                )
+            } else return null
+        })  
+    }            
 
     handleUserChange = (e) => {
         this.setState({
-            users: e.target.value,
+            userName: e.target.value,
         })
     }
 
     updateUserSelect() {
-		fetch('/api/User/GetAllUSers')
+		fetch('/api/User/GetAllUsers')
 			.then(res => res.json())
 			.then(data =>
 				this.setState({
 					users: data
 				})
-			);
+            );
+    }
+
+    sendUserId() {
+        console.log(this.state.choosenId)
+		fetch('/api/User/GetUser?memberID=' + this.state.choosenId)
+            .then(res => res.json())
+			.then(data =>
+				this.setState({
+					currentUser: data
+				})
+            );
     }
     
     componentDidMount() {
-		this.updateUserSelect();
+        this.updateUserSelect();
 	}
-
+    
     render() {
-        console.log(this.state.users[0]);
         const { users } = this.state;
+        const items = [];
+        for (let i = 0; i < users.length; ++i) {
+            items.push(<option key={users[i].id} value={users[i].name}>{users[i].name}</option>)
+        }
         return (
             <div>
                 <h1>Sign In</h1>
                 <h3>Choose User</h3>
                 <form onSubmit={this.handleFormSubmit}>
-                    <select value={users} onChange={this.handleUserChange}>
-                        <Options users={users}/>
+                    <select value={this.state.userName} onChange={this.handleUserChange}>
+                        <option value=""></option>
+                        {items}
                     </select>    
                     <br/>
-                    <button type="submit">Log in</button> 
+                    <button type="submit" onClick={this.handleGetId}>Log in</button> 
                     {this.state.isSelected ? null : <ValidationMessage text="User is not selected"/> }
+                    {/* {this.state.currentUser !== "" ? this.props.getCurrentUserToAdmin(this.state.currentUser) : null} */}
                 </form>
             </div>
         )
