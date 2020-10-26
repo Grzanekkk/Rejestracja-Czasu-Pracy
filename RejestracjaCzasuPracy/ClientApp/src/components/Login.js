@@ -1,8 +1,14 @@
 ﻿import React, { Component } from 'react'
 
-const ValidationMessage = (props) => {
+const ValidationMessage = props => {
     return <p>{props.text}</p>
 }
+
+const Options = props => {
+    console.log(props)
+    return null
+}
+
 
 export class Login extends Component {
 	constructor(props) {
@@ -41,15 +47,15 @@ export class Login extends Component {
 	}
 
     render() {
-        console.log(this.state.users[1])
+        console.log(this.state.users[0]);
+        const { users } = this.state;
         return (
             <div>
                 <h1>Sign In</h1>
                 <h3>Choose User</h3>
                 <form onSubmit={this.handleFormSubmit}>
-                    <select value={this.state.users.name} onChange={this.handleUserChange}>
-                        <option value=""></option>
-                        {}
+                    <select value={users} onChange={this.handleUserChange}>
+                        <Options users={users}/>
                     </select>    
                     <br/>
                     <button type="submit">Log in</button> 
