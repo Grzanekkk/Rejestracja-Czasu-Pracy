@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Login } from './components/Login';
-import Admin from './components/Admin';
+import { Admin } from './components/Admin';
 
 
 
@@ -10,7 +10,6 @@ export default class App extends Component {
 		this.state = {
 			isLogged: false,
 			content: '',
-			
 		}
 	}
 	onLoggIn = user => {
@@ -23,6 +22,7 @@ export default class App extends Component {
 		this.setState({
 			isLogged: false,
 			content: ''
+			
 		});
 	}
 
@@ -30,10 +30,11 @@ export default class App extends Component {
 		if (this.state.isLogged) {
 			return (
 				this.state.content
+				// <Login onLoggIn={this.onLoggIn} />
 			);
 		} else {
 			return (
-				<Login onLoggIn={this.onLoggIn}/>
+				<Login onLoggIn={this.onLoggIn} />
 			);
 		}
 	}
