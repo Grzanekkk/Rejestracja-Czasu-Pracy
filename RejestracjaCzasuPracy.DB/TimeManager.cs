@@ -73,7 +73,7 @@ namespace DatabaseConnection
             return minutesToCatchUp;
         }
 
-        public DataTable GetAllUserTimeToCatchUp()
+        public DataTable GetSummaryForAllUsers()
         {
             dataTable = new DataTable();
             query = $"SELECT sum(MinutesToCatchUp) Bilans, MemberID from Events group by MemberID";
@@ -84,11 +84,22 @@ namespace DatabaseConnection
             return dataTable;
         }
 
+        public DataTable GetUserEvents(string memberID)
+        {
+            dataTable = new DataTable();
+
+            query = $"SELECT * from Events Where MemberID = '{memberID}' ORDER BY Date DESC";
+
+            dbAccess.ReadDataThroughAdapter(query, dataTable);
+
+            return dataTable;
+        }
+
 
         #region Work Button
 
 
-        public bool CheckIfUserIsWorking(string memberID)
+        public bool IsWorking(string memberID)
         {
             dataTable = new DataTable();
             query = $"SELECT * from Events where MemberID = '{memberID}'";

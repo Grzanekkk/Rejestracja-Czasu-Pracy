@@ -60,17 +60,6 @@ namespace DatabaseConnection
             return listOfAllUsers;
         }
 
-        public DataTable GetUserEvents(string memberID)
-        {
-            dataTable = new DataTable();
-
-            query = $"SELECT * from Events Where MemberID = '{memberID}' ORDER BY Date DESC";
-
-            dbAccess.ReadDataThroughAdapter(query, dataTable);
-
-            return dataTable;
-        }
-
         public string[] SplitUserName(string name)
         {
             // [0] = firstName, [1] = surName

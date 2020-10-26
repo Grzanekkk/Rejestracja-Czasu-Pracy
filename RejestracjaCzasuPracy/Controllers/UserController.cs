@@ -13,7 +13,7 @@ namespace RejestracjaCzasuPracy.Controllers
         UserManager userManager = new UserManager();
        
         [HttpGet("[action]")]
-        public ActionResult GetAllUSers()
+        public ActionResult GetAllUsers()
         {
             List<User> allUsers = userManager.GetAllUsers();
 
