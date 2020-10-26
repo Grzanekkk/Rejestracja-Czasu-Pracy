@@ -11,29 +11,15 @@ namespace RejestracjaCzasuPracy.Controllers
     public class UserController : Controller
     {
         UserManager userManager = new UserManager();
-<<<<<<< Updated upstream
        
         [HttpGet("[action]")]
         public ActionResult GetAllUSers()
-=======
-        User currentUser;
-
-        public string GetAllUSers()
->>>>>>> Stashed changes
         {
             List<User> allUsers = userManager.GetAllUsers();
 
-<<<<<<< Updated upstream
             if (allUsers != null)
                 return Ok(allUsers);
             return BadRequest();
-=======
-        public string GetUser(string memberID)
-        {
-            currentUser = userManager.GetUserWithID(memberID);
-
-            return $"{currentUser.firstName} {currentUser.surName}";
->>>>>>> Stashed changes
         }
 
         [HttpGet("[action]")]

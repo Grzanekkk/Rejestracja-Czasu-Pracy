@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< Updated upstream
     "C:\\Users\\Właściciel\\Desktop\\kaczka\\Rejestracja-Czasu-Pracy\\RejestracjaCzasuPracy.DB\\RejestracjaCzasuPracy.DB.csproj": {}
   },
   "projects": {
@@ -16,25 +15,6 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Właściciel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-    "C:\\Users\\Jasio\\Desktop\\Programowanie\\Rejestracja-Czasu-Pracy\\RejestracjaCzasuPracy.DB\\RejestracjaCzasuPracy.DB.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\Jasio\\Desktop\\Programowanie\\Rejestracja-Czasu-Pracy\\RejestracjaCzasuPracy.DB\\RejestracjaCzasuPracy.DB.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Jasio\\Desktop\\Programowanie\\Rejestracja-Czasu-Pracy\\RejestracjaCzasuPracy.DB\\RejestracjaCzasuPracy.DB.csproj",
-        "projectName": "RejestracjaCzasuPracy.DB",
-        "projectPath": "C:\\Users\\Jasio\\Desktop\\Programowanie\\Rejestracja-Czasu-Pracy\\RejestracjaCzasuPracy.DB\\RejestracjaCzasuPracy.DB.csproj",
-        "packagesPath": "C:\\Users\\Jasio\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jasio\\Desktop\\Programowanie\\Rejestracja-Czasu-Pracy\\RejestracjaCzasuPracy.DB\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\Jasio\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> Stashed changes
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -46,10 +26,6 @@
         },
         "frameworks": {
           "netstandard2.0": {
-<<<<<<< Updated upstream
-=======
-            "targetAlias": "netstandard2.0",
->>>>>>> Stashed changes
             "projectReferences": {}
           }
         },
@@ -61,10 +37,6 @@
       },
       "frameworks": {
         "netstandard2.0": {
-<<<<<<< Updated upstream
-=======
-          "targetAlias": "netstandard2.0",
->>>>>>> Stashed changes
           "dependencies": {
             "Microsoft.Data.SqlClient": {
               "target": "Package",
@@ -95,11 +67,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-<<<<<<< Updated upstream
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100-rc.1.20452.10\\RuntimeIdentifierGraph.json"
->>>>>>> Stashed changes
         }
       }
     }
