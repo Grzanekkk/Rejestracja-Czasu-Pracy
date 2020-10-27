@@ -56,6 +56,26 @@ namespace RejestracjaCzasuPracy.Controllers
             return Ok(isWorking);
         }
 
+        [HttpGet("[action]")]
+        public ActionResult WorkButton(string memberID)
+        {
+            if (timeManager.IsWorking(memberID))
+            {
+                if (timeManager.IsOnBreak(memberID))
+                {
+                    timeManager.FinishBreak(memberID);
+                }
+
+                timeManager.StopWorking(memberID);
+            }
+            else    // User is not working now
+            {
+                timeManager.StartWorking(memberID);
+            }
+
+            return Ok(timeManager.IsWorking(memberID));
+        }
+
 
         #endregion GET
 
@@ -68,23 +88,7 @@ namespace RejestracjaCzasuPracy.Controllers
             timeManager.AddNewEvent(memberID, minutes);
         }
 
-        [HttpPost("[action]")]
-        public void WorkButton(string memberID)
-        {
-            if (timeManager.IsWorking(memberID))
-            {
-                if (timeManager.IsOnBreak(memberID))
-                {
-                    timeManager.FinishBreak(memberID);
-                } 
 
-                timeManager.StopWorking(memberID);
-            }
-            else    // User is not working now
-            {
-                timeManager.StartWorking(memberID);
-            }
-        }
 
 
         #endregion POST
