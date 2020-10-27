@@ -76,6 +76,7 @@ namespace RejestracjaCzasuPracy.Controllers
             return Ok(timeManager.IsWorking(memberID));
         }
 
+        [HttpGet("[action]")]
         public ActionResult BreakButton(string memberID)
         {
             if (timeManager.IsOnBreak(memberID))
@@ -90,6 +91,7 @@ namespace RejestracjaCzasuPracy.Controllers
             return Ok(timeManager.IsOnBreak(memberID));
         }
 
+        [HttpGet("[action]")]
         public ActionResult IsOnBreak(string memberID)
         {
             return Ok(timeManager.IsOnBreak(memberID));
