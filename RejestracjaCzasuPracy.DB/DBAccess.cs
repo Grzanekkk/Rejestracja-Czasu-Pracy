@@ -30,7 +30,7 @@ namespace DatabaseConnection        // Class used to execute commands and connec
                     //connection = new SqlConnection(setting.ConnectionString);
 
                     //connection.ConnectionString = setting.ConnectionString;
-                    connection.ConnectionString = "Data Source=(local);Initial Catalog=DPKSystem;Integrated Security=True";
+                    connection.ConnectionString = "Data Source=JASIO1\\JANEKSQL;Initial Catalog=DPKSystem;Integrated Security=True";
                     connection.Open();
                 }
             }
