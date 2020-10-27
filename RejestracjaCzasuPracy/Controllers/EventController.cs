@@ -48,6 +48,14 @@ namespace RejestracjaCzasuPracy.Controllers
             return Ok(timeToCatchUp);
         }
 
+        [HttpGet("[action]")]
+        public ActionResult IsWorking(string memberID)
+        {
+            bool isWorking = timeManager.IsWorking(memberID);
+
+            return Ok(isWorking);
+        }
+
 
         #endregion GET
 
