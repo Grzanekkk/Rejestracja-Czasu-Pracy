@@ -76,13 +76,31 @@ namespace RejestracjaCzasuPracy.Controllers
             return Ok(timeManager.IsWorking(memberID));
         }
 
+        public ActionResult BreakButton(string memberID)
+        {
+            if (timeManager.IsOnBreak(memberID))
+            {
+                timeManager.FinishBreak(memberID);
+            }
+            else
+            {
+                timeManager.StartBreak(memberID);
+            }
 
-        #endregion GET
+            return Ok(timeManager.IsOnBreak(memberID));
+        }
 
-        #region POST
+        public ActionResult IsOnBreak(string memberID)
+        {
+            return Ok(timeManager.IsOnBreak(memberID));
+        }
+
+#endregion GET
+
+#region POST
 
 
-        [HttpPost("[action]")]
+[HttpPost("[action]")]
         public void AddNewEvent(string memberID, [FromBody]int minutes)
         {
             timeManager.AddNewEvent(memberID, minutes);
