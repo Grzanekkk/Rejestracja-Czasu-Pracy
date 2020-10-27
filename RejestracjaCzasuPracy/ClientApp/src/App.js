@@ -12,26 +12,19 @@ export default class App extends Component {
 			content: '',
 		}
 	}
-	onLoggIn = currentUser => {
+	onLoggIn = currentId => {
 		this.setState({
 			isLogged: true,
-			content: <Admin user={currentUser} onLoggOut={this.onLoggOut} />
+			content: <Admin id={currentId} onLoggOut={this.onLoggOut} />
 		});
 	}
 	onLoggOut = () => {
 		this.setState({
 			isLogged: false,
 			content: ''
-			
 		});
 	}
-
-	// getCurrentUserToAdmin = currentUser => {
-	// 	this.setState({
-	// 		currentUser: currentUser,
-	// 	})
-	// }	
-
+	
 	render() {
 		if (this.state.isLogged) {
 			return (

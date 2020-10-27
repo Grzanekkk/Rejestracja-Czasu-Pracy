@@ -11,21 +11,17 @@ export class Login extends Component {
             userName: '',
             isSelected: true,
             users: '',
-            currentUser:'',
             choosenId: '',
-        }
+        } 
     }
 
     handleFormSubmit = (e) => {
         e.preventDefault();
         
 		if (this.state.userName) {
-            this.props.onLoggIn(this.state.onLoggIn); 
-            // this.props.getCurrentUserToAdmin(this.state.currentUser);
-            this.sendUserId(); 
-        }
-        else return this.setState({isSelected: false})
-        
+            // this.sendUserId(); 
+            this.props.onLoggIn(this.state.choosenId); 
+        } else return this.setState({isSelected: false})  
     }
 
     handleGetId = () => {
@@ -56,17 +52,6 @@ export class Login extends Component {
 				})
             );
     }
-
-    sendUserId() {
-        console.log(this.state.choosenId)
-		fetch('/api/User/GetUser?memberID=' + this.state.choosenId)
-            .then(res => res.json())
-			.then(data =>
-				this.setState({
-					currentUser: data
-				})
-            );
-    }
     
     componentDidMount() {
         this.updateUserSelect();
@@ -90,7 +75,6 @@ export class Login extends Component {
                     <br/>
                     <button type="submit" onClick={this.handleGetId}>Log in</button> 
                     {this.state.isSelected ? null : <ValidationMessage text="User is not selected"/> }
-                    {/* {this.state.currentUser !== "" ? this.props.getCurrentUserToAdmin(this.state.currentUser) : null} */}
                 </form>
             </div>
         )
