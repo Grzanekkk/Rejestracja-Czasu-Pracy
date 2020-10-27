@@ -33,7 +33,7 @@ namespace DatabaseConnection
                 query = $"SELECT * from CRMember Where MemberID = '{memberID}'";
 
                 dbAccess.ReadDataThroughAdapter(query, dataTable);
-
+                
                 return CreateNewUserFromDataBase(dataTable);    // can be null
             }
 

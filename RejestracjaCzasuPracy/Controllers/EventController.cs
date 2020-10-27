@@ -14,7 +14,6 @@ namespace RejestracjaCzasuPracy.Controllers
     public class EventController : Controller
     {
         TimeManager timeManager = new TimeManager();
-        UserManager userManager = new UserManager();
 
 
         #region GET
