@@ -68,6 +68,7 @@ namespace RejestracjaCzasuPracy.Controllers
             timeManager.AddNewEvent(memberID, minutes);
         }
 
+        [HttpPost("[action]")]
         public void WorkButton(string memberID)
         {
             if (timeManager.IsWorking(memberID))
