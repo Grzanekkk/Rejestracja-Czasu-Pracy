@@ -17,9 +17,7 @@ export class Login extends Component {
 
     handleFormSubmit = (e) => {
         e.preventDefault();
-        
 		if (this.state.userName) {
-            // this.sendUserId(); 
             this.props.onLoggIn(this.state.choosenId); 
         } else return this.setState({isSelected: false})  
     }
@@ -31,7 +29,6 @@ export class Login extends Component {
                     this.setState({
                         choosenId: user.id,
                     })
-                    
                 )
             } else return null
         })  

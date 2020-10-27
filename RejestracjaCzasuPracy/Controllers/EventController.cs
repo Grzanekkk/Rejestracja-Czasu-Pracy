@@ -97,12 +97,13 @@ namespace RejestracjaCzasuPracy.Controllers
             return Ok(timeManager.IsOnBreak(memberID));
         }
 
-#endregion GET
 
-#region POST
+        #endregion GET
+
+        #region POST
 
 
-[HttpPost("[action]")]
+        [HttpPost("[action]")]
         public void AddNewEvent(string memberID, [FromBody]int minutes)
         {
             timeManager.AddNewEvent(memberID, minutes);
