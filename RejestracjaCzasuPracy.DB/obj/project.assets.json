@@ -6125,23 +6125,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jasio\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Właściciel\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jasio\\Desktop\\Programowanie\\Rejestracja-Czasu-Pracy\\RejestracjaCzasuPracy.DB\\RejestracjaCzasuPracy.DB.csproj",
+      "projectUniqueName": "C:\\Users\\Właściciel\\Desktop\\kaczka\\Rejestracja-Czasu-Pracy\\RejestracjaCzasuPracy.DB\\RejestracjaCzasuPracy.DB.csproj",
       "projectName": "RejestracjaCzasuPracy.DB",
-      "projectPath": "C:\\Users\\Jasio\\Desktop\\Programowanie\\Rejestracja-Czasu-Pracy\\RejestracjaCzasuPracy.DB\\RejestracjaCzasuPracy.DB.csproj",
-      "packagesPath": "C:\\Users\\Jasio\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jasio\\Desktop\\Programowanie\\Rejestracja-Czasu-Pracy\\RejestracjaCzasuPracy.DB\\obj\\",
+      "projectPath": "C:\\Users\\Właściciel\\Desktop\\kaczka\\Rejestracja-Czasu-Pracy\\RejestracjaCzasuPracy.DB\\RejestracjaCzasuPracy.DB.csproj",
+      "packagesPath": "C:\\Users\\Właściciel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Właściciel\\Desktop\\kaczka\\Rejestracja-Czasu-Pracy\\RejestracjaCzasuPracy.DB\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Jasio\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Właściciel\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6153,7 +6149,6 @@
       },
       "frameworks": {
         "netstandard2.0": {
-          "targetAlias": "netstandard2.0",
           "projectReferences": {}
         }
       },
@@ -6165,7 +6160,6 @@
     },
     "frameworks": {
       "netstandard2.0": {
-        "targetAlias": "netstandard2.0",
         "dependencies": {
           "Microsoft.Data.SqlClient": {
             "target": "Package",
@@ -6196,7 +6190,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100-rc.1.20452.10\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
