@@ -120,7 +120,7 @@ namespace RejestracjaCzasuPracy.Controllers
         }
         
         [HttpGet("[action]")]
-        public ActionResult RefreshDate(string memberID)
+        public ActionResult RefreshData(string memberID)
         {
             DataToRefreshWindow data = new DataToRefreshWindow(timeManager.GetUserEvents(memberID), timeManager.CountUserTimeToCatchUp(memberID));
 
