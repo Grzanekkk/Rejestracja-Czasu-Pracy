@@ -41,6 +41,14 @@ namespace DatabaseConnection
             }
         }
 
+        public void DeleteEvent(string eventID)
+        {
+            dataTable = new DataTable();
+            SqlCommand deleteCommand = new SqlCommand($"DELETE FROM Events Where eventID='{eventID}'");
+
+            dbAccess.ExecuteQuery(deleteCommand);
+        }
+
         public void UpdateEvents(DataTable changes)
         {
             query = $"SELECT * from Events";

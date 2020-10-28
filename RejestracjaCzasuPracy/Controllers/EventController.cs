@@ -24,7 +24,7 @@ namespace RejestracjaCzasuPracy.Controllers
         public ActionResult GetUserEvents(string memberID)  // returns all user events
         {
             DataTable events = timeManager.GetUserEvents(memberID);
-            
+
             if (events != null)
                 return Ok(events);
             return BadRequest();
@@ -44,7 +44,7 @@ namespace RejestracjaCzasuPracy.Controllers
         public ActionResult GetUserTimeToCatchUp(string memberID)
         {
             int timeToCatchUp = timeManager.CountUserTimeToCatchUp(memberID);
-            
+
             return Ok(timeToCatchUp);
         }
 
@@ -95,6 +95,14 @@ namespace RejestracjaCzasuPracy.Controllers
         public ActionResult IsOnBreak(string memberID)
         {
             return Ok(timeManager.IsOnBreak(memberID));
+        }
+
+        [HttpGet("[action]")]
+        public ActionResult DeleteEvent(string eventID, string memberID)
+        {
+            timeManager.DeleteEvent(eventID);
+
+            return GetUserEvents(memberID);
         }
 
 
