@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Login } from './components/Login';
 import { Admin } from './components/Admin';
 
-
-
 export default class App extends Component {
 	constructor(props) {
 		super(props);
@@ -12,12 +10,14 @@ export default class App extends Component {
 			content: '',
 		}
 	}
+
 	onLoggIn = currentId => {
 		this.setState({
 			isLogged: true,
 			content: <Admin id={currentId} onLoggOut={this.onLoggOut} />
 		});
 	}
+
 	onLoggOut = () => {
 		this.setState({
 			isLogged: false,
@@ -29,11 +29,10 @@ export default class App extends Component {
 		if (this.state.isLogged) {
 			return (
 				this.state.content
-				// <Login onLoggIn={this.onLoggIn} />
 			);
 		} else {
 			return (
-				<Login onLoggIn={this.onLoggIn} getCurrentUserToAdmin={this.getCurrentUserToAdmin}/>
+				<Login onLoggIn={this.onLoggIn} />
 			);
 		}
 	}
