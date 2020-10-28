@@ -62,6 +62,7 @@ export class Admin extends Component {
             setTimeout(() => {
                 this.getMinutesToCatchUp();
             }, 50);
+            this.updateData();
     }
 
     isOnBreak() {
@@ -94,19 +95,27 @@ export class Admin extends Component {
             );
     }
 
-    // onClickSave = () => {
-    //     var data = {
-    //         memberID: this.state.currentId,
-    //         minutes: this.state.inputValue 
-    //     }; //mój obiekt który chce wysłać, może tam być np: {memberID: 'XyZ',  minutes: 120}
-    //     fetch('/api/Event/AddNewEvent', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(data)
-    //     })
-    // }
+    goHomeButton = () => {
+        fetch('/api/Event/GoHome?memberID=' + this.state.currentId)
+        this.updateData();
+    }
+    
+    addNewEvent = () => {
+        fetch('/api/Event/AddNewEvent?memberID=' + this.state.currentId + '&minutes=' + this.state.inputValue)
+        this.updateData();
+    }
+
+    updateData() {
+		fetch('/api/Event/RefreshData?memberID=' + this.state.currentId)
+            .then(res => res.json())
+			.then(data =>
+				this.setState({
+                    dataTable: data.userEvents,
+                    summaryUserMinutes: data.minutesToCatchUp,   
+				})
+            );
+            console.log(this.dataTable, this.summaryUserMinutes)
+    }       
 
     componentDidMount() {
         this.sendUserId();
@@ -117,16 +126,20 @@ export class Admin extends Component {
     }
     
     handleDeleteTable = (id) => {
-        fetch('/api/Event/DeleteEvent?eventID=' + id + '&memberID=' + this.state.currentId)
+        // eslint-disable-next-line no-restricted-globals
+        const alertConfirm = confirm('Are you sure you want to delete this record?')
+        if (alertConfirm) {
+            fetch('/api/Event/DeleteEvent?eventID=' + id + '&memberID=' + this.state.currentId)
 			.then(result => {
-				if (result.ok) {
-					this.getUserDataTable();
+				if (result.ok) {    
+					this.updateData();
 				} else {
 					return result.text().then(message => {
 						throw message;
 					});
 				}
 			});
+        } else return null
     }
 
     render() {
@@ -147,12 +160,10 @@ export class Admin extends Component {
         return (
 			<div>
 				<h1>Welcome to your profile {this.state.currentUser.name}</h1> 
-                <h2>Your Minutes to catch up</h2>
-                <h2>{this.state.summaryUserMinutes} minutes</h2>
-                <h2>Work hours</h2>
-                <p>9 - 17</p>
-                <input type="number" value={this.state.inputValue} onChange={this.handleInputChange}/><button onClick={this.onClickSave}>Add new record</button>
-                <button>Go Home</button>
+                <h2>Your Minutes to catch up: {this.state.summaryUserMinutes} minutes</h2>
+                <h2>Work hours: 9 - 17</h2>
+                <input type="number" value={this.state.inputValue} onChange={this.handleInputChange}/><button onClick={this.addNewEvent}>Add new record</button>
+                <button onClick={this.goHomeButton}>Go Home</button>
                 <button onClick={this.workButtonClick}>{this.state.isWorking ? 'Finish your work' : 'Start Working'}</button>
                 {this.state.isWorking ? <button onClick={this.breakButtonClick}>{this.state.isOnBreak ? 'Finish a break' : 'Take a break'}</button> : null}
                 <button>Go to summary of all users</button>
