@@ -116,8 +116,17 @@ export class Admin extends Component {
         this.getUserDataTable();
     }
     
-    handleDeleteTable = id => {
-        console.log(id)
+    handleDeleteTable = (id) => {
+        fetch('/api/Event/DeleteEvent?eventID=' + id + '&memberID=' + this.state.currentId)
+			.then(result => {
+				if (result.ok) {
+					this.getUserDataTable();
+				} else {
+					return result.text().then(message => {
+						throw message;
+					});
+				}
+			});
     }
 
     render() {
@@ -130,11 +139,11 @@ export class Admin extends Component {
                         <td>{dataTable[i].date}</td>
                         <td>{dataTable[i].minutesToCatchUp}</td>
                         <td>{dataTable[i].breakTime}</td>
-                        <td onClick={this.handleDeleteTable(id)}>delete</td>
+                        <td><button onClick={() => this.handleDeleteTable(id)}>Delete</button></td>
                     </tr>
             )
+            // debugger
         }
-        // console.log(events)
         return (
 			<div>
 				<h1>Welcome to your profile {this.state.currentUser.name}</h1> 
