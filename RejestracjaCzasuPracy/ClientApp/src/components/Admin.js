@@ -9,7 +9,14 @@ export class Admin extends Component {
             summaryUserMinutes: '',
             isWorking: '',
             isOnBreak: '',
+            inputValue: '',
         }
+    }
+
+    handleInputChange = e => {
+        this.setState({
+            inputValue: e.target.value,
+        })
     }
 
     sendUserId() {
@@ -51,9 +58,10 @@ export class Admin extends Component {
 					isWorking: data
 				})
             );
-            
-            this.getMinutesToCatchUp();
             this.isOnBreak();
+            setTimeout(() => {
+                this.getMinutesToCatchUp();
+            }, 50);
     }
 
     isOnBreak() {
@@ -77,6 +85,21 @@ export class Admin extends Component {
             
     }
 
+    onClickSave = () => {
+        var data = {
+            memberID: this.state.currentId,
+            minutes: this.state.inputValue 
+        }; //mój obiekt który chce wysłać, może tam być np: {memberID: 'XyZ',  minutes: 120}
+        fetch('/api/Event/AddNewEvent', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+    }
+
+
     componentDidMount() {
         this.sendUserId();
         this.getMinutesToCatchUp();
@@ -85,6 +108,7 @@ export class Admin extends Component {
 	}
 
     render() {
+        console.log(this.state.inputValue)
         return (
 			<div>
 				<h1>Welcome to your profile {this.state.currentUser.name}</h1> 
@@ -92,12 +116,11 @@ export class Admin extends Component {
                 <h2>{this.state.summaryUserMinutes} minutes</h2>
                 <h2>Work hours</h2>
                 <p>9 - 17</p>
-                <input type="number"/><button>Add new record</button>
+                <input type="number" value={this.state.inputValue} onChange={this.handleInputChange}/><button onClick={this.onClickSave}>Add new record</button>
                 <button>Go Home</button>
                 <button onClick={this.workButtonClick}>{this.state.isWorking ? 'Finish your work' : 'Start Working'}</button>
                 {this.state.isWorking ? <button onClick={this.breakButtonClick}>{this.state.isOnBreak ? 'Finish a break' : 'Take a break'}</button> : null}
                 <button>Go to summary of all users</button>
-                <button>Update records</button>
                 <button onClick={this.props.onLoggOut} >Log out</button>
             </div>
         )
