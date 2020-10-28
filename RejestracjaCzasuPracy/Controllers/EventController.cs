@@ -118,9 +118,31 @@ namespace RejestracjaCzasuPracy.Controllers
 
             timeManager.AddNewEvent(memberID, timeManager.CountMinutesToCatchUpFromNow(currentUser));
         }
+        
+        [HttpGet("[action]")]
+        public ActionResult RefreshDate(string memberID)
+        {
+            DataToRefreshWindow data = new DataToRefreshWindow(timeManager.GetUserEvents(memberID), timeManager.CountUserTimeToCatchUp(memberID));
 
+            if (data != null)
+                return Ok(data);
+            return BadRequest();
+        }
 
         #endregion GET
 
     }
+
+    class DataToRefreshWindow
+    {
+        DataTable userEvents;
+        int minutesToCatchUp;
+
+        public DataToRefreshWindow(DataTable _userEvents, int _minutesToCatchUp)
+        {
+            userEvents = _userEvents;
+            minutesToCatchUp = _minutesToCatchUp;
+        }
+    }
+
 }
