@@ -63,7 +63,7 @@ namespace RejestracjaCzasuPracy.Controllers
             {
                 if (timeManager.IsOnBreak(memberID))
                 {
-                    timeManager.FinishBreak(memberID);
+                    timeManager.FinishBreak(memberID);87
                 }
 
                 timeManager.StopWorking(memberID);
@@ -105,20 +105,14 @@ namespace RejestracjaCzasuPracy.Controllers
             return GetUserEvents(memberID);
         }
 
-
-        #endregion GET
-
-        #region POST
-
-
-        [HttpPost("[action]")]
-        public void AddNewEvent([FromBody]string memberID, [FromBody]int minutes)
+        [HttpGet("[action]")]
+        public void AddNewEvent([FromBody]string memberID, int minutes)
         {
             timeManager.AddNewEvent(memberID, minutes);
         }
 
-        [HttpPost("[action]")]
-        public void GoHomeButton(string memberID)
+        [HttpGet("[action]")]
+        public void GoHome(string memberID)
         {
             User currentUser = userManager.GetUserWithID(memberID);
 
@@ -126,6 +120,7 @@ namespace RejestracjaCzasuPracy.Controllers
         }
 
 
-        #endregion POST
+        #endregion GET
+
     }
 }
