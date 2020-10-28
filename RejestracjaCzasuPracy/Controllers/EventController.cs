@@ -14,6 +14,7 @@ namespace RejestracjaCzasuPracy.Controllers
     public class EventController : Controller
     {
         TimeManager timeManager = new TimeManager();
+        UserManager userManager = new UserManager();
 
 
         #region GET
@@ -103,12 +104,18 @@ namespace RejestracjaCzasuPracy.Controllers
 
 
         [HttpPost("[action]")]
-        public void AddNewEvent(string memberID, [FromBody]int minutes)
+        public void AddNewEvent([FromBody]string memberID, [FromBody]int minutes)
         {
             timeManager.AddNewEvent(memberID, minutes);
         }
 
+        [HttpPost("[action]")]
+        public void GoHomeButton(string memberID)
+        {
+            User currentUser = userManager.GetUserWithID(memberID);
 
+            timeManager.AddNewEvent(memberID, timeManager.CountMinutesToCatchUpFromNow(currentUser));
+        }
 
 
         #endregion POST

@@ -73,6 +73,7 @@ namespace DatabaseConnection
             return minutesToCatchUp;
         }
 
+
         public DataTable GetSummaryForAllUsers()
         {
             dataTable = new DataTable();
