@@ -63,7 +63,7 @@ namespace RejestracjaCzasuPracy.Controllers
             {
                 if (timeManager.IsOnBreak(memberID))
                 {
-                    timeManager.FinishBreak(memberID);87
+                    timeManager.FinishBreak(memberID);
                 }
 
                 timeManager.StopWorking(memberID);
@@ -106,7 +106,7 @@ namespace RejestracjaCzasuPracy.Controllers
         }
 
         [HttpGet("[action]")]
-        public void AddNewEvent([FromBody]string memberID, int minutes)
+        public void AddNewEvent(string memberID, int minutes)
         {
             timeManager.AddNewEvent(memberID, minutes);
         }
