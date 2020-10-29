@@ -129,11 +129,12 @@ namespace RejestracjaCzasuPracy.Controllers
             return BadRequest();
         }
 
+
         #endregion GET
 
     }
-
-    public class DataToRefreshWindow
+    
+    class DataToRefreshWindow
     {
         DataTable userEvents;
         int minutesToCatchUp;
