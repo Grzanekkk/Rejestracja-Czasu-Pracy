@@ -134,10 +134,10 @@ namespace RejestracjaCzasuPracy.Controllers
 
     }
     
-    class DataToRefreshWindow
+    public class DataToRefreshWindow
     {
-        DataTable userEvents;
-        int minutesToCatchUp;
+        public DataTable userEvents;
+        public int minutesToCatchUp;
 
         public DataToRefreshWindow(DataTable _userEvents, int _minutesToCatchUp)
         {

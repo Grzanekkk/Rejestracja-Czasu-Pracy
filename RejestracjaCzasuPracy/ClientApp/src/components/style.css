@@ -107,7 +107,7 @@ section::after {
 form select {
     color: #112d42;
     padding: 5px 10px;
-    font-size: 15px;
+    font-size: 20px;
     border: 3px solid #112d42;
     text-align: center;
     transition: .2s;
