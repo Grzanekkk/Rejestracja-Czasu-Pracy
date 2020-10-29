@@ -61,19 +61,24 @@ export class Login extends Component {
             items.push(<option key={users[i].id} value={users[i].name}>{users[i].name}</option>)
         }
         return (
-            <div>
-                <h1>Sign In</h1>
-                <h3>Choose User</h3>
-                <form onSubmit={this.handleFormSubmit}>
-                    <select value={this.state.userName} onChange={this.handleUserChange}>
-                        <option value=""></option>
-                        {items}
-                    </select>    
-                    <br/>
-                    <button type="submit" onClick={this.handleGetId}>Log in</button> 
-                    {this.state.isSelected ? null : <ValidationMessage text="User is not selected"/> }
-                </form>
-            </div>
+            <section>
+                <div className="title-section">
+                    <h2>Welcome to DPK System</h2>
+                </div>
+                <div className='login-section'>
+                    <h2>Sign In</h2>
+                    <h3>Choose User</h3>
+                    <form onSubmit={this.handleFormSubmit}>
+                        <select value={this.state.userName} onChange={this.handleUserChange}>
+                            <option value=""></option>
+                            {items}
+                        </select>    
+                        <br/>
+                        <button type="submit" onClick={this.handleGetId}>Log in</button> 
+                        {this.state.isSelected ? null : <ValidationMessage text="User is not selected"/> }
+                    </form>
+                </div>
+            </section>
         )
     }
 }

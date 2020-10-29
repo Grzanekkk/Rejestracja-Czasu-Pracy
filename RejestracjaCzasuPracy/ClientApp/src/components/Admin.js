@@ -62,7 +62,7 @@ export class Admin extends Component {
             setTimeout(() => {
                 this.getMinutesToCatchUp();
             }, 50);
-            this.updateData();
+            // this.updateData();
     }
 
     isOnBreak() {
@@ -97,25 +97,28 @@ export class Admin extends Component {
 
     goHomeButton = () => {
         fetch('/api/Event/GoHome?memberID=' + this.state.currentId)
-        this.updateData();
+        // this.updateData();
     }
     
     addNewEvent = () => {
         fetch('/api/Event/AddNewEvent?memberID=' + this.state.currentId + '&minutes=' + this.state.inputValue)
-        this.updateData();
+        this.setState({
+            inputValue: '',
+        })
+        // this.updateData();
     }
 
-    updateData() {
-		fetch('/api/Event/RefreshData?memberID=' + this.state.currentId)
-            .then(res => res.json())
-			.then(data =>
-				this.setState({
-                    dataTable: data.userEvents,
-                    summaryUserMinutes: data.minutesToCatchUp,   
-				})
-            );
-            console.log(this.dataTable, this.summaryUserMinutes)
-    }       
+    // updateData() {
+	// 	fetch('/api/Event/RefreshData?memberID=' + this.state.currentId)
+    //          .then(res => res.json())
+	// 		.then(data =>
+	// 			this.setState({
+    //                 dataTable: data.userEvents,
+    //                 summaryUserMinutes: data.minutesToCatchUp,   
+	// 			})
+    //         );
+    //         console.log(this.dataTable, this.summaryUserMinutes)
+    // }       
 
     componentDidMount() {
         this.sendUserId();
@@ -132,7 +135,7 @@ export class Admin extends Component {
             fetch('/api/Event/DeleteEvent?eventID=' + id + '&memberID=' + this.state.currentId)
 			.then(result => {
 				if (result.ok) {    
-					this.updateData();
+					this.getUserDataTable();
 				} else {
 					return result.text().then(message => {
 						throw message;
@@ -155,7 +158,6 @@ export class Admin extends Component {
                         <td><button onClick={() => this.handleDeleteTable(id)}>Delete</button></td>
                     </tr>
             )
-            // debugger
         }
         return (
 			<div>

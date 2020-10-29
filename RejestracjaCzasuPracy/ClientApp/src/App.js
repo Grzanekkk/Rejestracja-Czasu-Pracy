@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Login } from './components/Login';
 import { Admin } from './components/Admin';
+import './components/style.css';
 
 export default class App extends Component {
 	constructor(props) {
