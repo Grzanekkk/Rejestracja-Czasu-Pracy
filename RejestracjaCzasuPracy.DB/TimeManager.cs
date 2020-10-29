@@ -85,7 +85,7 @@ namespace DatabaseConnection
         public DataTable GetSummaryForAllUsers()
         {
             dataTable = new DataTable();
-            query = $"SELECT sum(MinutesToCatchUp) Bilans, MemberID AS Name FROM Events group by MemberID";
+            query = $"SELECT sum(MinutesToCatchUp) Bilans, MemberID FROM Events group by MemberID";
             //string query2 = $"SELECT e.*, u.FirstName, u.SurName from Events e inner join CRMember u on e.UserID = u";
             dbAccess.ReadDataThroughAdapter(query, dataTable);
 
@@ -94,7 +94,7 @@ namespace DatabaseConnection
             dbAccess.ReadDataThroughAdapter(query, usersTabel);
 
             DataTable summaryTable = dataTable.Clone();
-            summaryTable.Columns["Name"].DataType = typeof(string);
+            summaryTable.Columns.Add("Name", typeof(string));
 
             foreach (DataRow row in dataTable.Rows)
             {
@@ -104,7 +104,7 @@ namespace DatabaseConnection
             foreach (DataRow row in summaryTable.Rows)
             {
                 for (int n = 0; n < usersTabel.Rows.Count; n++)
-                    if (row["Name"].ToString() == usersTabel.Rows[n]["MemberID"].ToString())
+                    if (row["MemberID"].ToString() == usersTabel.Rows[n]["MemberID"].ToString())
                     {
                         row["Name"] = $"{usersTabel.Rows[n]["FirstName"]} {usersTabel.Rows[n]["SurName"]}";
                     }
