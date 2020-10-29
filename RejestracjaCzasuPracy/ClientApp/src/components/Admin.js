@@ -105,20 +105,27 @@ export class Admin extends Component {
         this.setState({
             inputValue: '',
         })
-        // this.updateData();
+        this.updateDataAfter();
     }
 
-    // updateData() {
-	// 	fetch('/api/Event/RefreshData?memberID=' + this.state.currentId)
-    //          .then(res => res.json())
-	// 		.then(data =>
-	// 			this.setState({
-    //                 dataTable: data.userEvents,
-    //                 summaryUserMinutes: data.minutesToCatchUp,   
-	// 			})
-    //         );
-    //         console.log(this.dataTable, this.summaryUserMinutes)
-    // }       
+    updateDataAfter = () => {
+        setTimeout(() => {
+            this.updateData();
+        }, 50);
+    }
+
+
+    updateData() {       
+        fetch('/api/Event/RefreshData?memberID=' + this.state.currentId)
+              .then(res => res.json())
+	 		.then(data =>
+	 			this.setState({
+                     dataTable: data.userEvents,
+                     summaryUserMinutes: data.minutesToCatchUp,   
+	 			})
+             );
+             console.log(this.dataTable, this.summaryUserMinutes)
+     }       
 
     componentDidMount() {
         this.sendUserId();
