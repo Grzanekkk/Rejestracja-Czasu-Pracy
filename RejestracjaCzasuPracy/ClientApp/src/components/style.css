@@ -1,154 +1,258 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Source+Code+Pro:wght@300&display=swap');
+﻿@import url("https://fonts.googleapis.com/css2?family=Quicksand&family=Source+Code+Pro:wght@300&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    min-width: 1200px;
+  min-width: 1200px;
 }
 
 /* ----------------------------- LOGIN ----------------------------- */
-section {
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    background: #112d42;
-    height: 100vh;
-    color: white;
-    margin: 0;
+section.login {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  background: #112d42;
+  height: 100vh;
+  color: white;
+  margin: 0;
 }
 
-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    background-color: #03a9f4;
+section.login::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #03a9f4;
 }
 
 .title-section {
-    position: absolute;
-    background-color: #e74c3c;
-    color: black;
-    width: 35%;
-    height: 23%;
-    top: 8%;
-    left: 10%;
-    box-shadow: 0 50px 50px rgba(0,0,0,.5);
-    z-index: 9;
+  position: absolute;
+  background-color: #e74c3c;
+  color: black;
+  width: 35%;
+  height: 23%;
+  top: 8%;
+  left: 10%;
+  box-shadow: 0 50px 50px rgba(0, 0, 0, 0.5);
+  z-index: 9;
 }
 
 .line {
-    position: relative;
-    font-family: 'Source Code Pro', monospace;   
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    width: 16em;
-    font-size: 40px;
-    border-right: 2px solid rgba(255, 255, 255, .75);
-    white-space: nowrap;
-    overflow: hidden;
+  position: relative;
+  font-family: "Source Code Pro", monospace;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  width: 16em;
+  font-size: 40px;
+  border-right: 2px solid rgba(255, 255, 255, 0.75);
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 /* animation */
 .anim-typewriter {
-    animation: typewriter 3s steps(40) 1s 1 normal both, blinkTextCursor 500ms steps(40) infinite normal
+  animation: typewriter 3s steps(40) 1s 1 normal both,
+    blinkTextCursor 500ms steps(40) infinite normal;
 }
 
 @keyframes typewriter {
-    from {
-        width: 0;
-    }
-    to {
-        width: 12.8em;
-    }
+  from {
+    width: 0;
+  }
+  to {
+    width: 12.8em;
+  }
 }
 
 @keyframes blinkTextCursor {
-    from {
-        border-right-color: rgba(255, 255, 255, .75);
-    }
-    to {
-        border-right-color: transparent;
-    }
+  from {
+    border-right-color: rgba(255, 255, 255, 0.75);
+  }
+  to {
+    border-right-color: transparent;
+  }
 }
 
 .login-section {
-    font-family: 'Quicksand', sans-serif;
-    position: relative;
-    padding: 70px 60px;
-    background-color: white;
-    color: black;
-    width: 50%;
-    height: 50%;
-    top: 50%;
-    left: 30%;
-    transform: translateY(-50%);
-    box-shadow: 0 50px 50px rgba(0,0,0,.5);
-    z-index: 10;
+  font-family: "Quicksand", sans-serif;
+  position: relative;
+  padding: 70px 60px;
+  background-color: white;
+  color: black;
+  width: 50%;
+  height: 50%;
+  top: 50%;
+  left: 30%;
+  transform: translateY(-50%);
+  box-shadow: 0 50px 50px rgba(0, 0, 0, 0.5);
+  z-index: 10;
 }
 
 .login-section h2 {
-    font-size: 60px;
-    margin-bottom: 40px;
+  font-size: 60px;
+  margin-bottom: 40px;
 }
 
 .login-section h3 {
-    font-size: 30px;
-    margin-bottom: 15px;
+  font-size: 30px;
+  margin-bottom: 10px;
 }
 
 form select {
-    color: #112d42;
-    padding: 5px 10px;
-    font-size: 20px;
-    border: 3px solid #112d42;
-    text-align: center;
-    transition: .2s;
+  color: #112d42;
+  padding: 5px 10px;
+  font-size: 20px;
+  border: 3px solid #112d42;
+  text-align: center;
+  transition: 0.2s;
 }
 
 form select option {
-    padding: 10px 20px;
-    font-size: 20px;
-    border: 2px solid red;
+  padding: 10px 20px;
+  font-size: 20px;
 }
 
 form select:hover {
-    border: 3px solid #03a9f4;
+  border: 3px solid #03a9f4;
 }
 
 .login-section button {
-    background-color: white;
-    padding: 5px 20px;
-    margin-top: 60px;
-    font-size: 20px;
-    border: 2px solid #112d42;
-    transition: .2s;
-    width: 110px;
+  background-color: white;
+  padding: 5px 20px;
+  margin-top: 60px;
+  font-size: 20px;
+  border: 2px solid #112d42;
+  transition: 0.2s;
+  width: 110px;
 }
 
 .login-section button:hover {
-    color:#03a9f4;
-    border:2px solid #03a9f4;
+  color: #03a9f4;
+  border: 2px solid #03a9f4;
 }
 
 .login-section p {
-    margin-top: 10px;
-    font-size: 16px;
+  margin-top: 10px;
+  font-size: 16px;
 }
 
 .login-section button.go-to-summary {
-    position: absolute;
-    right: 5%;
-    bottom: 63px;
-    width: 200px;
+  position: absolute;
+  right: 5%;
+  bottom: 63px;
+  width: 200px;
 }
 
 /* ----------------------------- SUMMARY OF ALL USERS ----------------------------- */
+section.summary {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  background-color: #e74c3c;
+  height: 100vh;
+  color: white;
+  margin: 0;
+  font-family: "Quicksand", sans-serif;
+}
+
+section.summary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15%;
+  height: 100%;
+  background-color: #112d42;
+}
+
+section.summary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70%;
+  height: 100%;
+  background: #03a9f4;
+}
+
+section.summary div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-70%, -50%);
+  z-index: 10;
+  color: black;
+  width: 35%;
+  min-height: 95%;
+  background-color: #fff;
+  box-shadow: 0 50px 50px rgba(0, 0, 0, 0.5);
+  border-radius: 16px 16px 0 0;
+}
+
+section.summary div table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  font-size: 20px;
+  width: 100%;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+}
+
+section.summary div table thead tr {
+  background-color: #112d42;
+  text-align: left;
+  color: white;
+}
+
+section.summary table tr th {
+  color: white;
+}
+
+section.summary table td,
+section.summary table th {
+  padding: 11px 14px;
+  color: #112d42;
+}
+
+section.summary table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+section.summary table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+/* section.summary table tbody tr:last-of-type {
+  border-bottom: 2px solid #112d42;
+} */
+
+section.summary button {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  margin: 10px;
+  text-align: center;
+  background-color: white;
+  padding: 5px 20px;
+  margin-top: 60px;
+  font-size: 25px;
+  border: 2px solid #112d42;
+  transition: 0.2s;
+}
+
+section.summary button:hover {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+/* ----------------------------- ADMIN ----------------------------- */

@@ -10,6 +10,18 @@ const Informations = props => {
     )
 }
 
+const Buttons = props => {
+    const { inputValue, inputChange, addNewEvent, goHome, startWork, isWorking, breakClick, isOnBreak } = props;
+    return (
+        <React.Fragment>
+            <input type="number" value={inputValue} onChange={inputChange}/><button onClick={addNewEvent}>Add new record</button>
+            <button onClick={goHome}>Go Home</button>
+            <button onClick={startWork}>{isWorking ? 'Finish your work' : 'Start Working'}</button>
+            {isWorking ? <button onClick={breakClick}>{isOnBreak ? 'Finish a break' : 'Take a break'}</button> : null}
+        </React.Fragment>
+    )
+}
+
 const DataTable = props => {
     return (
         <table>
@@ -172,13 +184,20 @@ export class Admin extends Component {
                     </tr>
             )
         }
+
         return (
 			<div>
 				<Informations userName={this.state.currentUser.name} summaryUserMinutes={this.state.summaryUserMinutes} />
-                <input type="number" value={this.state.inputValue} onChange={this.handleInputChange}/><button onClick={this.addNewEvent}>Add new record</button>
-                <button onClick={this.goHomeButton}>Go Home</button>
-                <button onClick={this.workButtonClick}>{this.state.isWorking ? 'Finish your work' : 'Start Working'}</button>
-                {this.state.isWorking ? <button onClick={this.breakButtonClick}>{this.state.isOnBreak ? 'Finish a break' : 'Take a break'}</button> : null}
+                <Buttons 
+                    inputValue={this.state.inputValue}
+                    inputChange={this.handleInputChange}
+                    addNewEvent={this.addNewEvent}
+                    goHome={this.goHomeButton}
+                    startWork={this.workButtonClick}
+                    isWorking={this.state.isWorking}
+                    breakClick={this.breakButtonClick}
+                    isOnBreak={this.state.isOnBreak}
+                />
                 <DataTable events={events} />
                 <button onClick={this.props.onLoggOut}>Log out</button>
             </div>

@@ -15,7 +15,6 @@ const SummaryDataTable = props => {
         </table>
     )
 }
-
 export class Summary extends Component {
     constructor(props) {
         super(props)
@@ -34,7 +33,7 @@ export class Summary extends Component {
             );
      }     
      
-     componentDidMount() {
+    componentDidMount() {
         this.getSummaryDataTable();
     }
 
@@ -43,17 +42,20 @@ export class Summary extends Component {
         const summary = [];
         for (let i = 0; i < summaryDataTable.length; i++) {
             summary.push( 
-                    <tr key={summaryDataTable[i].memberID}>
-                        <td>{summaryDataTable[i].bilans}</td>
-                        <td>{summaryDataTable[i].name}</td>
-                    </tr>
+                <tr key={summaryDataTable[i].memberID}>
+                    <td>{summaryDataTable[i].bilans}</td>
+                    <td>{summaryDataTable[i].name}</td>
+                </tr>
             )
         }
+
         return (
-            <div>
-                <SummaryDataTable summary={summary}/>
-                <button className='back-to-login' onClick={this.props.backToLogin}>Return to login</button>
-            </div>
+            <section className='summary'>
+                <div>
+                    <SummaryDataTable summary={summary}/>
+                    <button className='back-to-login' onClick={this.props.backToLogin}>Return to login</button>
+                </div>
+            </section>
         )
     }
 }

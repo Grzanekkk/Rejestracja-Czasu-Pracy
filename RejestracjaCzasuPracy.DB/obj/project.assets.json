@@ -6125,19 +6125,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Właściciel\\.nuget\\packages\\": {}
+    "C:\\Users\\tommy\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Właściciel\\Desktop\\kaczka\\Rejestracja-Czasu-Pracy\\RejestracjaCzasuPracy.DB\\RejestracjaCzasuPracy.DB.csproj",
+      "projectUniqueName": "C:\\Users\\tommy\\Desktop\\Kurs React\\Rejestracja-Czasu-Pracy\\RejestracjaCzasuPracy.DB\\RejestracjaCzasuPracy.DB.csproj",
       "projectName": "RejestracjaCzasuPracy.DB",
-      "projectPath": "C:\\Users\\Właściciel\\Desktop\\kaczka\\Rejestracja-Czasu-Pracy\\RejestracjaCzasuPracy.DB\\RejestracjaCzasuPracy.DB.csproj",
-      "packagesPath": "C:\\Users\\Właściciel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Właściciel\\Desktop\\kaczka\\Rejestracja-Czasu-Pracy\\RejestracjaCzasuPracy.DB\\obj\\",
+      "projectPath": "C:\\Users\\tommy\\Desktop\\Kurs React\\Rejestracja-Czasu-Pracy\\RejestracjaCzasuPracy.DB\\RejestracjaCzasuPracy.DB.csproj",
+      "packagesPath": "C:\\Users\\tommy\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\tommy\\Desktop\\Kurs React\\Rejestracja-Czasu-Pracy\\RejestracjaCzasuPracy.DB\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Właściciel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tommy\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

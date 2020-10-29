@@ -92,7 +92,7 @@ export class Login extends Component {
             items.push(<option key={users[i].id} value={users[i].name}>{users[i].name}</option>)
         }
         return (
-            <section>
+            <section className='login'>
                 <DpkTitle/>
                 <div className='login-section'>
                     <TitleLoginText />

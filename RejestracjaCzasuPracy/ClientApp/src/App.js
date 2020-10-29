@@ -3,7 +3,6 @@ import { Login } from './components/Login';
 import { Admin } from './components/Admin';
 import { Summary } from './components/Summary';
 import './components/style.css';
-
 export default class App extends Component {
 	constructor(props) {
 		super(props);
@@ -44,9 +43,8 @@ export default class App extends Component {
 	}
 	
 	render() {
-		if (this.state.isLogged) return  this.state.content
+		if (this.state.isLogged) return this.state.content
 		else if (this.state.inSummary) return this.state.content2	
 		else return <Login onLoggIn={this.onLoggIn} goToSummary={this.goToSummary} />
-
 	}
 }
