@@ -1,5 +1,32 @@
 ﻿import React, { Component } from 'react';
 
+const Informations = props => {
+    return (
+        <React.Fragment>
+            <h1>Welcome to your profile {props.userName}</h1> 
+            <h2>Your Minutes to catch up: {props.summaryUserMinutes} minutes</h2>
+            <h2>Work hours: 9 - 17</h2>
+        </React.Fragment>
+    )
+}
+
+const DataTable = props => {
+    return (
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>MinutesToCatchUp</th>
+                    <th>BreakTime</th>
+                </tr>
+            </thead>
+            <tbody>
+                {props.events} 
+            </tbody>
+        </table>
+    )
+}
+
 export class Admin extends Component {
     constructor(props) {
         super(props);
@@ -29,17 +56,7 @@ export class Admin extends Component {
 				})
             );
     }
-
-    getMinutesToCatchUp() {
-		fetch('/api/Event/GetUserTimeToCatchUp?memberID=' + this.state.currentId)
-            .then(res => res.json())
-			.then(data =>
-				this.setState({
-					summaryUserMinutes: data
-				})
-            );
-    }
-    
+  
     isWorking() {
 		fetch('/api/Event/IsWorking?memberID=' + this.state.currentId)
             .then(res => res.json())
@@ -59,10 +76,7 @@ export class Admin extends Component {
 				})
             );
             this.isOnBreak();
-            setTimeout(() => {
-                this.getMinutesToCatchUp();
-            }, 50);
-            // this.updateData();
+         this.updateDataAfter();
     }
 
     isOnBreak() {
@@ -85,19 +99,13 @@ export class Admin extends Component {
             );     
     }
 
-    getUserDataTable() {
-		fetch('/api/Event/GetUserEvents?memberID=' + this.state.currentId)
-            .then(res => res.json())
-			.then(data =>
-				this.setState({
-					dataTable: data
-				})
-            );
-    }
-
     goHomeButton = () => {
-        fetch('/api/Event/GoHome?memberID=' + this.state.currentId)
-        // this.updateData();
+        // eslint-disable-next-line no-restricted-globals
+        const alertConfirm = confirm('Are you sure you want to go home?')
+        if (alertConfirm) {
+            fetch('/api/Event/GoHome?memberID=' + this.state.currentId)
+            this.updateDataAfter();
+        } else return null;
     }
     
     addNewEvent = () => {
@@ -114,7 +122,6 @@ export class Admin extends Component {
         }, 50);
     }
 
-
     updateData() {       
         fetch('/api/Event/RefreshData?memberID=' + this.state.currentId)
               .then(res => res.json())
@@ -126,14 +133,6 @@ export class Admin extends Component {
              );
              console.log(this.dataTable, this.summaryUserMinutes)
      }       
-
-    componentDidMount() {
-        this.sendUserId();
-        this.getMinutesToCatchUp();
-        this.isWorking();
-        this.isOnBreak();
-        this.getUserDataTable();
-    }
     
     handleDeleteTable = (id) => {
         // eslint-disable-next-line no-restricted-globals
@@ -142,7 +141,7 @@ export class Admin extends Component {
             fetch('/api/Event/DeleteEvent?eventID=' + id + '&memberID=' + this.state.currentId)
 			.then(result => {
 				if (result.ok) {    
-					this.getUserDataTable();
+					this.updateDataAfter();
 				} else {
 					return result.text().then(message => {
 						throw message;
@@ -150,6 +149,13 @@ export class Admin extends Component {
 				}
 			});
         } else return null
+    }
+
+    componentDidMount() {
+        this.sendUserId();
+        this.isWorking();
+        this.isOnBreak();
+        this.updateDataAfter();
     }
 
     render() {
@@ -168,26 +174,12 @@ export class Admin extends Component {
         }
         return (
 			<div>
-				<h1>Welcome to your profile {this.state.currentUser.name}</h1> 
-                <h2>Your Minutes to catch up: {this.state.summaryUserMinutes} minutes</h2>
-                <h2>Work hours: 9 - 17</h2>
+				<Informations userName={this.state.currentUser.name} summaryUserMinutes={this.state.summaryUserMinutes} />
                 <input type="number" value={this.state.inputValue} onChange={this.handleInputChange}/><button onClick={this.addNewEvent}>Add new record</button>
                 <button onClick={this.goHomeButton}>Go Home</button>
                 <button onClick={this.workButtonClick}>{this.state.isWorking ? 'Finish your work' : 'Start Working'}</button>
                 {this.state.isWorking ? <button onClick={this.breakButtonClick}>{this.state.isOnBreak ? 'Finish a break' : 'Take a break'}</button> : null}
-                <button>Go to summary of all users</button>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>MinutesToCatchUp</th>
-                            <th>BreakTime</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {events} 
-                    </tbody>
-                </table>
+                <DataTable events={events} />
                 <button onClick={this.props.onLoggOut}>Log out</button>
             </div>
         )

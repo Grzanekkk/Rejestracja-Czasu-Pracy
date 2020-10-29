@@ -1,4 +1,35 @@
-﻿import React, { Component } from 'react'
+﻿import React, { Component } from 'react';
+
+const DpkTitle = () => {
+    return (
+        <div className="title-section">
+            <p className="line anim-typewriter">Welcome to DPK System</p>
+        </div>
+    )
+}
+const TitleLoginText = () => {
+    return (
+        <React.Fragment>
+            <h2>Sign In</h2>
+            <h3>Choose User</h3>
+        </React.Fragment>
+    )
+}
+
+const LoginForm = props => {
+    const { formSubmit, userName, userChange, items, getId, isSelected } = props;
+    return (
+        <form onSubmit={formSubmit}>
+            <select value={userName} onChange={userChange}>
+                    <option value=""></option>
+                    {items}
+            </select>    
+            <br/>
+            <button type="submit" onClick={getId}>Log in</button> 
+            {isSelected ? null : <ValidationMessage text="User is not selected"/> }
+        </form>
+    )
+}
 
 const ValidationMessage = props => {
     return <p>{props.text}</p>
@@ -62,23 +93,21 @@ export class Login extends Component {
         }
         return (
             <section>
-                <div className="title-section">
-                    <p className="line anim-typewriter">Welcome to DPK System</p>
-                </div>
+                <DpkTitle/>
                 <div className='login-section'>
-                    <h2>Sign In</h2>
-                    <h3>Choose User</h3>
-                    <form onSubmit={this.handleFormSubmit}>
-                        <select value={this.state.userName} onChange={this.handleUserChange}>
-                            <option value=""></option>
-                            {items}
-                        </select>    
-                        <br/>
-                        <button type="submit" onClick={this.handleGetId}>Log in</button> 
-                        {this.state.isSelected ? null : <ValidationMessage text="User is not selected"/> }
-                    </form>
+                    <TitleLoginText />
+                    <LoginForm 
+                        formSubmit={this.handleFormSubmit}
+                        userName={this.state.userName}
+                        userChange={this.handleUserChange}
+                        items={items}
+                        getId={this.handleGetId}
+                        isSelected={this.state.isSelected}
+                    />
+                    <button className='go-to-summary' onClick={this.props.goToSummary}>Go to summary of all users</button>
                 </div>
             </section>
         )
     }
 }
+

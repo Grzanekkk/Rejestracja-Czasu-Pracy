@@ -10,6 +10,7 @@ body {
     min-width: 1200px;
 }
 
+/* ----------------------------- LOGIN ----------------------------- */
 section {
     position: relative;
     justify-content: center;
@@ -81,7 +82,7 @@ section::after {
 
 .login-section {
     font-family: 'Quicksand', sans-serif;
-    position: absolute;
+    position: relative;
     padding: 70px 60px;
     background-color: white;
     color: black;
@@ -143,7 +144,11 @@ form select:hover {
     font-size: 16px;
 }
 
-.login-section div.logo {
-    /* background-image: url('../img/DPKLogo.png'); */
+.login-section button.go-to-summary {
     position: absolute;
+    right: 5%;
+    bottom: 63px;
+    width: 200px;
 }
+
+/* ----------------------------- SUMMARY OF ALL USERS ----------------------------- */
