@@ -77,6 +77,7 @@ export class Login extends Component {
                         <button type="submit" onClick={this.handleGetId}>Log in</button> 
                         {this.state.isSelected ? null : <ValidationMessage text="User is not selected"/> }
                     </form>
+                    <div className="logo"><img src="src/img/DPKLogo.png" alt="DPK Logo"/></div>
                 </div>
             </section>
         )

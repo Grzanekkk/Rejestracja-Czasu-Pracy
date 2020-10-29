@@ -14,12 +14,10 @@ section {
     position: relative;
     justify-content: center;
     align-items: center;
-    /* min-height: 100vh; */
     background: #112d42;
     height: 100vh;
     color: white;
     margin: 0;
-    /* max-height: 100vh; */
 }
 
 section::after {
@@ -60,7 +58,7 @@ section::after {
 
 /* animation */
 .anim-typewriter {
-    animation: typewriter 4s steps(40) 1s 1 normal both, blinkTextCursor 500ms steps(40) infinite normal
+    animation: typewriter 3s steps(40) 1s 1 normal both, blinkTextCursor 500ms steps(40) infinite normal
 }
 
 @keyframes typewriter {
@@ -98,10 +96,54 @@ section::after {
 
 .login-section h2 {
     font-size: 60px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .login-section h3 {
     font-size: 30px;
     margin-bottom: 15px;
+}
+
+form select {
+    color: #112d42;
+    padding: 5px 10px;
+    font-size: 15px;
+    border: 3px solid #112d42;
+    text-align: center;
+    transition: .2s;
+}
+
+form select option {
+    padding: 10px 20px;
+    font-size: 20px;
+    border: 2px solid red;
+}
+
+form select:hover {
+    border: 3px solid #03a9f4;
+}
+
+.login-section button {
+    background-color: white;
+    padding: 5px 20px;
+    margin-top: 60px;
+    font-size: 20px;
+    border: 2px solid #112d42;
+    transition: .2s;
+    width: 110px;
+}
+
+.login-section button:hover {
+    color:#03a9f4;
+    border:2px solid #03a9f4;
+}
+
+.login-section p {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.login-section div.logo {
+    /* background-image: url('../img/DPKLogo.png'); */
+    position: absolute;
 }
