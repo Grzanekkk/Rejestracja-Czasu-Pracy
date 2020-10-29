@@ -63,7 +63,7 @@ export class Login extends Component {
         return (
             <section>
                 <div className="title-section">
-                    <h2>Welcome to DPK System</h2>
+                    <p className="line anim-typewriter">Welcome to DPK System</p>
                 </div>
                 <div className='login-section'>
                     <h2>Sign In</h2>
