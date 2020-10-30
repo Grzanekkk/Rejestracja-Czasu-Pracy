@@ -10,23 +10,23 @@ namespace DatabaseConnection
         private DBAccess dbAccess = new DBAccess();
         private string query;
 
-        public bool AddNewEvent(string memberID, int minutesToCatchUp)
+        public bool AddNewEvent(string memberID, int balance)
         {
-            SqlCommand insertCommand = new SqlCommand($"INSERT into Events(EventID, Date, MinutesToCatchUp, MemberID, BreakTime) " +
-                $"values(@EventID, @Date, @Minutes, @MemberID, @BreakTime)");
+            SqlCommand insertCommand = new SqlCommand($"INSERT into Events(EventID, Date, Balance, MemberID, BreakTime) " +
+                $"values(@EventID, @Date, @Balance, @MemberID, @BreakTime)");
 
             insertCommand.Parameters.AddWithValue("@EventID", Guid.NewGuid());
             insertCommand.Parameters.AddWithValue("@Date", Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss")));
             insertCommand.Parameters.AddWithValue("@MemberID", memberID);
             insertCommand.Parameters.AddWithValue("@BreakTime", 0);
 
-            if (minutesToCatchUp == 0) 
+            if (balance == 0) 
             {
-                insertCommand.Parameters.AddWithValue("@Minutes", DBNull.Value);
+                insertCommand.Parameters.AddWithValue("@Balance", DBNull.Value);
             }
             else
             {
-                insertCommand.Parameters.AddWithValue("@Minutes", minutesToCatchUp);
+                insertCommand.Parameters.AddWithValue("@Balance", balance);
             }
 
             int row = dbAccess.ExecuteQuery(insertCommand);
@@ -56,36 +56,36 @@ namespace DatabaseConnection
             dbAccess.ExecuteDataAdapter(changes, query);
         }
 
-        public int CountUserTimeToCatchUp(string memberID)
+        public int CountUserBalance(string memberID)
         {
             dataTable = new DataTable();
-            query = $"SELECT sum(MinutesToCatchUp) Bilans, MemberID from Events where MemberID = '{memberID}' group by MemberID";
-            int minutesToCatchUp = 0;
+            query = $"SELECT sum(Balance) Balance, MemberID from Events where MemberID = '{memberID}' group by MemberID";
+            int balance = 0;
 
             dbAccess.ReadDataThroughAdapter(query, dataTable);
 
-            if (dataTable.Rows.Count != 0 && !dataTable.Rows[0].IsNull("Bilans") && dataTable.Rows[0]["Bilans"] != DBNull.Value)
-            {              
-                minutesToCatchUp = Convert.ToInt32(dataTable.Rows[0]["Bilans"]);
+            if (dataTable.Rows.Count != 0 && !dataTable.Rows[0].IsNull("Balance") && dataTable.Rows[0]["Balance"] != DBNull.Value)
+            {
+                balance = Convert.ToInt32(dataTable.Rows[0]["Balance"]);
             }
 
-            return minutesToCatchUp;
+            return balance;
         }
 
-        public int CountMinutesToCatchUpFromNow(User currentUser)
+        public int CountBalanceFromNow(User currentUser)
         {
             TimeSpan timeSpan = DateTime.Now - currentUser.finishWorkHour;
 
-            int minutesToCatchUp = Convert.ToInt32(timeSpan.TotalMinutes) * -1;
+            int balance = Convert.ToInt32(timeSpan.TotalMinutes);
 
-            return minutesToCatchUp;
+            return balance;
         }
 
 
         public DataTable GetSummaryForAllUsers()
         {
             dataTable = new DataTable();
-            query = $"SELECT sum(MinutesToCatchUp) Bilans, MemberID FROM Events group by MemberID";
+            query = $"SELECT sum(Balance) Balance, MemberID FROM Events group by MemberID";
             dbAccess.ReadDataThroughAdapter(query, dataTable);
 
             query = $"Select * From CRMember";
@@ -131,7 +131,7 @@ namespace DatabaseConnection
             int i = 0;
             foreach (DataRow row in date.Rows)
             {
-                row["Date"] = Convert.ToDateTime(dataTable.Rows[i]["Date"]).ToString("dd-MM-yyyy HH:mm:ss");
+                row["Date"] = Convert.ToDateTime(dataTable.Rows[i]["Date"]).ToString("dd.MM.yyyy HH:mm:ss");
             }
 
             return date;
@@ -150,7 +150,7 @@ namespace DatabaseConnection
 
             foreach(DataRow row in dataTable.Rows)
             {
-                if (row.IsNull("MinutesToCatchUp"))
+                if (row.IsNull("Balance"))
                 {
                     return true;
                 }        
@@ -165,9 +165,8 @@ namespace DatabaseConnection
             int minutes = GetMinutesOfWorkSinceStart(memberID);
 
             minutes -= (480 + GetUserMinutesOnBreak(memberID)); // 8 hours, odejmujemy 8 godzin oraz czas spędzony na przerwie aby sprawdzić różnice i dodać reszte do nadrobienia
-            minutes = minutes * -1;
 
-            dataTable.Rows[0]["MinutesToCatchUp"] = minutes;
+            dataTable.Rows[0]["Balance"] = minutes;
 
             UpdateEvents(dataTable);
         }
@@ -184,7 +183,7 @@ namespace DatabaseConnection
 
         private int GetMinutesOfWorkSinceStart(string memberID)     
         {           
-            return GetMinutesFromDateTimeInDataBase(memberID, "MinutesToCatchUp", "Date");
+            return GetMinutesFromDateTimeInDataBase(memberID, "Balance", "Date");
         }
 
 
@@ -196,7 +195,7 @@ namespace DatabaseConnection
         public void StartBreak(string memberID)
         {
             dataTable = new DataTable();
-            query = $"SELECT * from Events where MinutesToCatchUp IS NULL AND MemberId = '{memberID}'";
+            query = $"SELECT * from Events where Balance IS NULL AND MemberId = '{memberID}'";
             dbAccess.ReadDataThroughAdapter(query, dataTable);
 
             dataTable.Rows[0]["BeginningOfTheLatestBreak"] = DateTime.Now;
@@ -207,7 +206,7 @@ namespace DatabaseConnection
         public void FinishBreak(string memberID)
         {
             dataTable = new DataTable();
-            query = $"SELECT * from Events where MinutesToCatchUp IS NULL AND MemberId = '{memberID}'";
+            query = $"SELECT * from Events where Balance IS NULL AND MemberId = '{memberID}'";
             dbAccess.ReadDataThroughAdapter(query, dataTable);
 
 
@@ -223,7 +222,7 @@ namespace DatabaseConnection
         public bool IsOnBreak(string memberID)
         {
             dataTable = new DataTable();
-            query = $"SELECT * from Events where MinutesToCatchUp IS NULL AND MemberId = '{memberID}'";
+            query = $"SELECT * from Events where Balance IS NULL AND MemberId = '{memberID}'";
             dbAccess.ReadDataThroughAdapter(query, dataTable);
 
             if (dataTable.Rows.Count != 0 && dataTable.Rows[0]["BeginningOfTheLatestBreak"] != DBNull.Value)
@@ -237,7 +236,7 @@ namespace DatabaseConnection
         private int GetUserMinutesOnBreak(string memberID)
         {
             dataTable = new DataTable();
-            query = $"SELECT * from Events where MinutesToCatchUp IS NULL AND MemberId = '{memberID}'";
+            query = $"SELECT * from Events where Balance IS NULL AND MemberId = '{memberID}'";
             dbAccess.ReadDataThroughAdapter(query, dataTable);
 
             int minutesOnBreak = Convert.ToInt32(dataTable.Rows[0]["BreakTime"]);
@@ -273,7 +272,7 @@ namespace DatabaseConnection
 
         private void DeleteLetestNullRow(string memberID)
         {
-            query = $"DELETE from Events where MinutesToCatchUp IS NULL";
+            query = $"DELETE from Events where Balance IS NULL";
             SqlCommand deleteCommand = new SqlCommand(query);
 
             dbAccess.ExecuteQuery(deleteCommand);
