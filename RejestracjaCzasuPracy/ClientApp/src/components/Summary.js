@@ -15,6 +15,7 @@ const SummaryDataTable = props => {
         </table>
     )
 }
+
 export class Summary extends Component {
     constructor(props) {
         super(props)

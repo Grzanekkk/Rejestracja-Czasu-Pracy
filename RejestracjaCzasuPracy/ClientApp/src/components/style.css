@@ -8,13 +8,12 @@
 
 body {
   min-width: 1200px;
+  min-height: 100vh;
 }
 
 /* ----------------------------- LOGIN ----------------------------- */
 section.login {
   position: relative;
-  justify-content: center;
-  align-items: center;
   background: #112d42;
   height: 100vh;
   color: white;
@@ -154,8 +153,6 @@ form select:hover {
 /* ----------------------------- SUMMARY OF ALL USERS ----------------------------- */
 section.summary {
   position: relative;
-  justify-content: center;
-  align-items: center;
   background-color: #e74c3c;
   height: 100vh;
   color: white;
@@ -189,7 +186,7 @@ section.summary div {
   left: 50%;
   transform: translate(-70%, -50%);
   z-index: 10;
-  color: black;
+  color: #112d42;
   width: 35%;
   min-height: 95%;
   background-color: #fff;
@@ -245,7 +242,7 @@ section.summary button {
   background-color: white;
   padding: 5px 20px;
   margin-top: 60px;
-  font-size: 25px;
+  font-size: 20px;
   border: 2px solid #112d42;
   transition: 0.2s;
 }
@@ -256,3 +253,219 @@ section.summary button:hover {
 }
 
 /* ----------------------------- ADMIN ----------------------------- */
+div.admin {
+  position: relative;
+  background-color: #e74c3c;
+  min-height: 100vh;
+  color: white;
+  margin: 0;
+  font-family: "Quicksand", sans-serif;
+}
+
+div.admin::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 65%;
+  min-height: 100%;
+  background-color: #112d42;
+}
+
+div.admin::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  min-height: 100%;
+  background-color: #03a9f4;
+}
+
+div.informations {
+  background-color: #fff;
+  color: #112d42;
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  height: 300px;
+  padding: 20px;
+  box-shadow: 0 50px 50px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+div.informations span {
+  color: #03a9f4;
+}
+
+div.informations .welcome {
+  margin: 0 0 20px;
+  font-size: 40px;
+}
+
+div.informations .minutes {
+  margin-bottom: 120px;
+  font-size: 30px;
+}
+
+div.informations .work-hours {
+  font-size: 30px;
+}
+
+.samebtn {
+  position: absolute;
+  z-index: 15;
+  color: #112d42;
+  background-color: white;
+  padding: 7px 23px;
+  font-size: 25px;
+  border: 2px solid #112d42;
+  transition: 0.2s;
+  width: 200px;
+}
+
+.go-home {
+  top: 25%;
+  right: 3%;
+}
+
+.start-finish-work {
+  top: 40%;
+  right: 3%;
+  /* border: 2px solid #112d42; */
+}
+
+.take-finish-break {
+  top: 50%;
+  right: 3%;
+}
+
+.go-home:hover, .start-finish-work:hover, .take-finish-break:hover {
+  border: 2px solid #03a9f4;
+  color: #03a9f4;
+}
+
+.logout:hover {
+  border: 2px solid #e74c3c;
+  color: #e74c3c;
+}
+
+div.admin .record-wrap {
+  background-color: white;
+  color: #112d42;
+}
+
+.record-wrap input {
+  position: absolute;
+  width: 200px;
+  height: 40px;
+  z-index: 30;
+  font-size: 25px;
+  top: 50%;
+  left: 10%;
+  padding: 10px;
+  border: 2px solid #112d42;
+  transition: .2s;
+}
+
+.record-wrap .new-record {
+  width: 200px;
+  position: absolute;
+  left: 10%;
+  top: 55%;
+  border: 2px solid #112d42;
+}
+
+.record-wrap .new-record:hover {
+  color: #03a9f4;
+  border: 2px solid #03a9f4;
+}
+
+.record-wrap input:hover {
+  border: 2px solid #03a9f4;
+}
+
+table.admin-table {
+  overflow-y: scroll; 
+  display: block;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  color: #112d42;
+  box-shadow: 0 50px 50px rgba(0, 0, 0, 0.5);
+  z-index: 12;
+  border-collapse: collapse;
+  margin: 0 auto;
+  font-size: 17px;
+  height: 700px;
+  border-radius: 16px 16px 0 0;
+}
+
+table.admin-table thead tr {
+  background-color: #03a9f4;
+  text-align: left;
+  color: white;
+  width: 100%;
+}
+
+table.admin-table tr th {
+  color: white;
+  background-color: #03a9f4;
+  top: 0;
+  z-index: 100;
+  position: sticky;
+  /* border-right: .5px solid rgb(224, 217, 217); */
+}
+
+table.admin-table td,
+table.admin-table th {
+  padding: 10px 13px;
+  color: #112d42;
+}
+
+table.admin-table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+table.admin-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+table.admin-table .delete {
+  padding: 3px 10px; 
+  background-color: #fff;
+  color: #112d42;
+  font-size: 16px;
+  font-weight: bold;
+  border: 2px solid  #112d42;
+  transition: .2s;
+}
+
+table.admin-table .delete:hover {
+  border: 2px solid  #e74c3c;
+  color: #e74c3c;
+}
+
+div.admin .logout {
+  position: absolute;
+  right: 3%;
+  bottom: 5%;
+  color: #112d42;
+  background-color: white;
+  padding: 5px 20px;
+  margin-top: 60px;
+  font-size: 20px;
+  border: 2px solid #112d42;
+  transition: 0.2s;
+  width: 200px;
+}
+
+div.admin .logout:hover {
+  border: 2px solid #e74c3c;
+  color: #e74c3c;
+}
+
+
+

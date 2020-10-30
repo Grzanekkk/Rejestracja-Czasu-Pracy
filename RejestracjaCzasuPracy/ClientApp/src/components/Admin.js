@@ -2,11 +2,11 @@
 
 const Informations = props => {
     return (
-        <React.Fragment>
-            <h1>Welcome to your profile {props.userName}</h1> 
-            <h2>Your Minutes to catch up: {props.summaryUserMinutes} minutes</h2>
-            <h2>Work hours: 9 - 17</h2>
-        </React.Fragment>
+        <div className='informations'>
+            <h1 className='welcome'>Welcome to your profile <span>{props.userName}</span> </h1> 
+            <h2 className='minutes'>Your Minutes to catch up: <span>{props.summaryUserMinutes}</span> minutes</h2>
+            <h2 className='work-hours'>Work hours: <span>9 - 17</span></h2>
+        </div>
     )
 }
 
@@ -14,28 +14,31 @@ const Buttons = props => {
     const { inputValue, inputChange, addNewEvent, goHome, startWork, isWorking, breakClick, isOnBreak } = props;
     return (
         <React.Fragment>
-            <input type="number" value={inputValue} onChange={inputChange}/><button onClick={addNewEvent}>Add new record</button>
-            <button onClick={goHome}>Go Home</button>
-            <button onClick={startWork}>{isWorking ? 'Finish your work' : 'Start Working'}</button>
-            {isWorking ? <button onClick={breakClick}>{isOnBreak ? 'Finish a break' : 'Take a break'}</button> : null}
+            <div className='record-wrap'>
+                <input type="number" value={inputValue} onChange={inputChange}/><button className='new-record samebtn' onClick={addNewEvent}>Add new record</button>
+            </div>
+            <button className='go-home samebtn' onClick={goHome}>Go Home</button>
+            <button className='start-finish-work samebtn' onClick={startWork}>{isWorking ? 'Finish your work' : 'Start Working'}</button>
+            {isWorking ? <button className='take-finish-break samebtn' onClick={breakClick}>{isOnBreak ? 'Finish a break' : 'Take a break'}</button> : null}
         </React.Fragment>
     )
 }
 
 const DataTable = props => {
     return (
-        <table>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>MinutesToCatchUp</th>
-                    <th>BreakTime</th>
-                </tr>
-            </thead>
-            <tbody>
-                {props.events} 
-            </tbody>
-        </table>
+            <table className='admin-table'>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>MinutesToCatchUp</th>
+                        <th>BreakTime</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {props.events} 
+                </tbody>
+            </table>
     )
 }
 
@@ -143,7 +146,6 @@ export class Admin extends Component {
                      summaryUserMinutes: data.minutesToCatchUp,   
 	 			})
              );
-             console.log(this.dataTable, this.summaryUserMinutes)
      }       
     
     handleDeleteTable = (id) => {
@@ -171,7 +173,7 @@ export class Admin extends Component {
     }
 
     render() {
-        const { dataTable } = this.state;
+        const { dataTable, currentUser ,summaryUserMinutes ,inputValue, isWorking, isOnBreak } = this.state;
         const events = [];
         for (let i = 0; i < dataTable.length; i++) {
             const id = dataTable[i].eventID;
@@ -180,27 +182,27 @@ export class Admin extends Component {
                         <td>{dataTable[i].date}</td>
                         <td>{dataTable[i].minutesToCatchUp}</td>
                         <td>{dataTable[i].breakTime}</td>
-                        <td><button onClick={() => this.handleDeleteTable(id)}>Delete</button></td>
+                        <td><button className='delete' onClick={() => this.handleDeleteTable(id)}>X</button></td>
                     </tr>
             )
         }
 
         return (
-			<div>
-				<Informations userName={this.state.currentUser.name} summaryUserMinutes={this.state.summaryUserMinutes} />
-                <Buttons 
-                    inputValue={this.state.inputValue}
-                    inputChange={this.handleInputChange}
-                    addNewEvent={this.addNewEvent}
-                    goHome={this.goHomeButton}
-                    startWork={this.workButtonClick}
-                    isWorking={this.state.isWorking}
-                    breakClick={this.breakButtonClick}
-                    isOnBreak={this.state.isOnBreak}
-                />
-                <DataTable events={events} />
-                <button onClick={this.props.onLoggOut}>Log out</button>
-            </div>
+                <div className='admin'>
+                    <Informations userName={currentUser.name} summaryUserMinutes={summaryUserMinutes} />
+                    <Buttons 
+                        inputValue={inputValue}
+                        inputChange={this.handleInputChange}
+                        addNewEvent={this.addNewEvent}
+                        goHome={this.goHomeButton}
+                        startWork={this.workButtonClick}
+                        isWorking={isWorking}
+                        breakClick={this.breakButtonClick}
+                        isOnBreak={isOnBreak}
+                    />
+                    <DataTable events={events} />
+                    <button className='logout' onClick={this.props.onLoggOut}>Log out</button>
+                </div>
         )
     }
 }

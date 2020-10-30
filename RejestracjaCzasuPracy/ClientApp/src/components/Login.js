@@ -7,6 +7,7 @@ const DpkTitle = () => {
         </div>
     )
 }
+
 const TitleLoginText = () => {
     return (
         <React.Fragment>
@@ -86,7 +87,7 @@ export class Login extends Component {
 	}
     
     render() {
-        const { users } = this.state;
+        const { users, userName, isSelected } = this.state;
         const items = [];
         for (let i = 0; i < users.length; ++i) {
             items.push(<option key={users[i].id} value={users[i].name}>{users[i].name}</option>)
@@ -98,11 +99,11 @@ export class Login extends Component {
                     <TitleLoginText />
                     <LoginForm 
                         formSubmit={this.handleFormSubmit}
-                        userName={this.state.userName}
+                        userName={userName}
                         userChange={this.handleUserChange}
                         items={items}
                         getId={this.handleGetId}
-                        isSelected={this.state.isSelected}
+                        isSelected={isSelected}
                     />
                     <button className='go-to-summary' onClick={this.props.goToSummary}>Go to summary of all users</button>
                 </div>
