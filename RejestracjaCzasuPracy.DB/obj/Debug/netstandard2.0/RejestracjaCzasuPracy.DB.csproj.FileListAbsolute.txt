@@ -36,3 +36,4 @@ C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPra
 C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.csproj.CoreCompileInputs.cache
 C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.dll
 C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.pdb
+C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.csprojAssemblyReference.cache

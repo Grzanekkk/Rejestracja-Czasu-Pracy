@@ -23,7 +23,8 @@ namespace DatabaseConnection        // Class used to execute commands and connec
             try
             {
                 if (connection.State != ConnectionState.Open)
-                {
+                {   
+                    //  Connection string is stored in App.config
                     ConnectionStringSettings setting = ConfigurationManager.ConnectionStrings["MainConnection"];
                     SqlConnectionStringBuilder build = new SqlConnectionStringBuilder(setting.ConnectionString);
                     connection = new SqlConnection(setting.ConnectionString);
