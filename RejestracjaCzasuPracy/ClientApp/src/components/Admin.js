@@ -4,7 +4,7 @@ const Informations = props => {
     return (
         <div className='informations'>
             <h1 className='welcome'>Welcome to your profile <span>{props.userName}</span> </h1> 
-            <h2 className='minutes'>Bilans: <span>{props.summaryUserHours}</span> hours <span>{props.summaryUserMinutes}</span> minutes</h2>
+            <h2 className='minutes'>Bilans: <span>{props.summaryUserHours}</span> hours <span>{props.summaryUserHours != 0 ? Math.abs(props.summaryUserMinutes) : props.summaryUserMinutes}</span> minutes</h2>
             <h2 className='work-hours'>Work hours: <span>9 - 17</span></h2>
         </div>
     )
@@ -141,14 +141,13 @@ export class Admin extends Component {
     updateData() {       
         fetch('/api/Event/RefreshData?memberID=' + this.state.currentId)
               .then(res => res.json())
-	 		.then(data =>
-	 			this.setState({
-                     dataTable: data.userEvents,
-                     summaryUserMinutes: data.Balance % 60,
-                     summaryUserHours: data.Balance / 60
-	 			})
-             );
-             debugger
+                .then(data =>
+                    this.setState({
+                        dataTable: data.userEvents,
+                        summaryUserHours: Math.trunc(data.balance/60),
+                        summaryUserMinutes: data.balance%60,
+                    })
+                )
      }       
     
     handleDeleteTable = (id) => {
