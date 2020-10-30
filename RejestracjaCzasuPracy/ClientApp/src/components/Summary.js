@@ -5,7 +5,7 @@ const SummaryDataTable = props => {
         <table>
             <thead>
                 <tr>
-                    <th>Bilans</th>
+                    <th>Balance</th>
                     <th>Name</th>
                 </tr>
             </thead>
@@ -44,7 +44,7 @@ export class Summary extends Component {
         for (let i = 0; i < summaryDataTable.length; i++) {
             summary.push( 
                 <tr key={summaryDataTable[i].memberID}>
-                    <td>{summaryDataTable[i].bilans}</td>
+                    <td>{summaryDataTable[i].balance}</td>
                     <td>{summaryDataTable[i].name}</td>
                 </tr>
             )

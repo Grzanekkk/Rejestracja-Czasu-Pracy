@@ -41,14 +41,6 @@ namespace RejestracjaCzasuPracy.Controllers
         }
 
         [HttpGet("[action]")]
-        public ActionResult GetUserTimeToCatchUp(string memberID)
-        {
-            int timeToCatchUp = timeManager.CountUserBalance(memberID);
-
-            return Ok(timeToCatchUp);
-        }
-
-        [HttpGet("[action]")]
         public ActionResult IsWorking(string memberID)
         {
             bool isWorking = timeManager.IsWorking(memberID);
@@ -140,12 +132,12 @@ namespace RejestracjaCzasuPracy.Controllers
     public class DataToRefreshWindow
     {
         public DataTable userEvents;
-        public int minutesToCatchUp;
+        public int balance;
 
-        public DataToRefreshWindow(DataTable _userEvents, int _minutesToCatchUp)
+        public DataToRefreshWindow(DataTable _userEvents, int _balance)
         {
             userEvents = _userEvents;
-            minutesToCatchUp = _minutesToCatchUp;
+            balance = _balance;
         }
     }
 

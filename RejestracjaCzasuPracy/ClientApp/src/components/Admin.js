@@ -4,7 +4,7 @@ const Informations = props => {
     return (
         <div className='informations'>
             <h1 className='welcome'>Welcome to your profile <span>{props.userName}</span> </h1> 
-            <h2 className='minutes'>Your Minutes to catch up: <span>{props.summaryUserMinutes}</span> minutes</h2>
+            <h2 className='minutes'>Bilans: <span>{props.summaryUserHours}</span> hours <span>{props.summaryUserMinutes}</span> minutes</h2>
             <h2 className='work-hours'>Work hours: <span>9 - 17</span></h2>
         </div>
     )
@@ -30,7 +30,7 @@ const DataTable = props => {
                 <thead>
                     <tr>
                         <th>Date</th>
-                        <th>MinutesToCatchUp</th>
+                        <th>Balance</th>
                         <th>BreakTime</th>
                         <th>Delete</th>
                     </tr>
@@ -49,6 +49,7 @@ export class Admin extends Component {
             currentId: this.props.id,
             currentUser: '',
             summaryUserMinutes: '',
+            summaryUserHours: '',
             isWorking: '',
             isOnBreak: '',
             inputValue: '',
@@ -143,9 +144,11 @@ export class Admin extends Component {
 	 		.then(data =>
 	 			this.setState({
                      dataTable: data.userEvents,
-                     summaryUserMinutes: data.minutesToCatchUp,   
+                     summaryUserMinutes: data.Balance % 60,
+                     summaryUserHours: data.Balance / 60
 	 			})
              );
+             debugger
      }       
     
     handleDeleteTable = (id) => {
@@ -173,14 +176,14 @@ export class Admin extends Component {
     }
 
     render() {
-        const { dataTable, currentUser ,summaryUserMinutes ,inputValue, isWorking, isOnBreak } = this.state;
+        const { dataTable, currentUser , summaryUserMinutes, summaryUserHours ,inputValue, isWorking, isOnBreak } = this.state;
         const events = [];
         for (let i = 0; i < dataTable.length; i++) {
             const id = dataTable[i].eventID;
             events.push( 
                     <tr key={id}>
                         <td>{dataTable[i].date}</td>
-                        <td>{dataTable[i].minutesToCatchUp}</td>
+                        <td>{dataTable[i].balance}</td>
                         <td>{dataTable[i].breakTime}</td>
                         <td><button className='delete' onClick={() => this.handleDeleteTable(id)}>X</button></td>
                     </tr>
@@ -189,7 +192,7 @@ export class Admin extends Component {
 
         return (
                 <div className='admin'>
-                    <Informations userName={currentUser.name} summaryUserMinutes={summaryUserMinutes} />
+                    <Informations userName={currentUser.name} summaryUserMinutes={summaryUserMinutes} summaryUserHours={summaryUserHours} />
                     <Buttons 
                         inputValue={inputValue}
                         inputChange={this.handleInputChange}

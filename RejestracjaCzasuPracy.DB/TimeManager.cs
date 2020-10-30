@@ -16,7 +16,7 @@ namespace DatabaseConnection
                 $"values(@EventID, @Date, @Balance, @MemberID, @BreakTime)");
 
             insertCommand.Parameters.AddWithValue("@EventID", Guid.NewGuid());
-            insertCommand.Parameters.AddWithValue("@Date", Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss")));
+            insertCommand.Parameters.AddWithValue("@Date", DateTime.Now);
             insertCommand.Parameters.AddWithValue("@MemberID", memberID);
             insertCommand.Parameters.AddWithValue("@BreakTime", 0);
 
