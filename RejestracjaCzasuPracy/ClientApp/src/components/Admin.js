@@ -1,10 +1,11 @@
 ﻿import React, { Component } from 'react';
 
 const Informations = props => {
+    const { userName, summaryUserHours, summaryUserMinutes } = props;
     return (
         <div className='informations'>
-            <h1 className='welcome'>Welcome to your profile <span>{props.userName}</span> </h1> 
-            <h2 className='minutes'>Bilans: <span>{props.summaryUserHours}</span> hours <span>{props.summaryUserHours != 0 ? Math.abs(props.summaryUserMinutes) : props.summaryUserMinutes}</span> minutes</h2>
+            <h1 className='welcome'>Welcome to your profile <span>{userName}</span> </h1> 
+            <h2 className='minutes'>Bilans: <span>{summaryUserHours}</span> hours <span>{summaryUserHours != 0 ? Math.abs(summaryUserMinutes) : summaryUserMinutes}</span> minutes</h2>
             <h2 className='work-hours'>Work hours: <span>9 - 17</span></h2>
         </div>
     )
