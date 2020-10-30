@@ -132,6 +132,7 @@ namespace DatabaseConnection
             foreach (DataRow row in date.Rows)
             {
                 row["Date"] = Convert.ToDateTime(dataTable.Rows[i]["Date"]).ToString("dd.MM.yyyy HH:mm:ss");
+                i++;
             }
 
             return date;

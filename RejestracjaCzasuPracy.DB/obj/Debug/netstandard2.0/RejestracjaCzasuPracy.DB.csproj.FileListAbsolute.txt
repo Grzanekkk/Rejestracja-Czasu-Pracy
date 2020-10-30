@@ -20,15 +20,6 @@ C:\Users\tommy\Desktop\Kurs React\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.
 C:\Users\tommy\Desktop\Kurs React\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.csproj.CoreCompileInputs.cache
 C:\Users\tommy\Desktop\Kurs React\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.dll
 C:\Users\tommy\Desktop\Kurs React\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.pdb
-C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\bin\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.deps.json
-C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\bin\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.dll
-C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\bin\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.pdb
-C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.AssemblyInfoInputs.cache
-C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.AssemblyInfo.cs
-C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.csproj.CoreCompileInputs.cache
-C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.dll
-C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.pdb
-C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.csprojAssemblyReference.cache
 C:\Users\Właściciel\Desktop\kaczka\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\bin\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.deps.json
 C:\Users\Właściciel\Desktop\kaczka\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\bin\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.dll
 C:\Users\Właściciel\Desktop\kaczka\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\bin\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.pdb
@@ -38,3 +29,12 @@ C:\Users\Właściciel\Desktop\kaczka\Rejestracja-Czasu-Pracy\RejestracjaCzasuPra
 C:\Users\Właściciel\Desktop\kaczka\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.csproj.CoreCompileInputs.cache
 C:\Users\Właściciel\Desktop\kaczka\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.dll
 C:\Users\Właściciel\Desktop\kaczka\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.pdb
+C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\bin\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.deps.json
+C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\bin\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.dll
+C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\bin\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.pdb
+C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.csprojAssemblyReference.cache
+C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.AssemblyInfoInputs.cache
+C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.AssemblyInfo.cs
+C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.csproj.CoreCompileInputs.cache
+C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.dll
+C:\Users\Jasio\Desktop\Programowanie\Rejestracja-Czasu-Pracy\RejestracjaCzasuPracy.DB\obj\Debug\netstandard2.0\RejestracjaCzasuPracy.DB.pdb
