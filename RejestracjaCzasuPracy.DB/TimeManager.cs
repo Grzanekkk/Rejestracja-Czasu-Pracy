@@ -86,7 +86,6 @@ namespace DatabaseConnection
         {
             dataTable = new DataTable();
             query = $"SELECT sum(MinutesToCatchUp) Bilans, MemberID FROM Events group by MemberID";
-            //string query2 = $"SELECT e.*, u.FirstName, u.SurName from Events e inner join CRMember u on e.UserID = u";
             dbAccess.ReadDataThroughAdapter(query, dataTable);
 
             query = $"Select * From CRMember";

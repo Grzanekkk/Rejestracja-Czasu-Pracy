@@ -108,7 +108,10 @@ namespace RejestracjaCzasuPracy.Controllers
         [HttpGet("[action]")]
         public void AddNewEvent(string memberID, int minutes)
         {
-            timeManager.AddNewEvent(memberID, minutes);
+            if(minutes != 0)
+            {
+                timeManager.AddNewEvent(memberID, minutes);
+            }
         }
 
         [HttpGet("[action]")]

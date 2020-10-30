@@ -13,10 +13,10 @@ namespace DatabaseConnection        // Class used to execute commands and connec
         private SqlCommand command = new SqlCommand();
         private SqlDataAdapter adapter = new SqlDataAdapter();
         private SqlConnection connection = new SqlConnection();
-        private IConfiguration configuration;
 
 
         #region Connection Managment
+
 
         public void CreateConnection()
         {
@@ -24,13 +24,11 @@ namespace DatabaseConnection        // Class used to execute commands and connec
             {
                 if (connection.State != ConnectionState.Open)
                 {
-                    //ConnectionStringSettings setting = ConfigurationManager.ConnectionStrings[configuration.GetConnectionString("DPKSystemDB")];
-                    //ConnectionStringSettings setting = ConfigurationManager.ConnectionStrings[];
-                    //SqlConnectionStringBuilder build = new SqlConnectionStringBuilder(setting.ConnectionString);
-                    //connection = new SqlConnection(setting.ConnectionString);
+                    ConnectionStringSettings setting = ConfigurationManager.ConnectionStrings["MainConnection"];
+                    SqlConnectionStringBuilder build = new SqlConnectionStringBuilder(setting.ConnectionString);
+                    connection = new SqlConnection(setting.ConnectionString);
 
-                    //connection.ConnectionString = setting.ConnectionString;
-                    connection.ConnectionString = "Data Source=(local);Initial Catalog=DPKSystem;Integrated Security=True";
+                    connection.ConnectionString = setting.ConnectionString;
                     connection.Open();
                 }
             }
@@ -40,12 +38,6 @@ namespace DatabaseConnection        // Class used to execute commands and connec
             }
         }
 
-
-        public void CloseConnection()
-        {
-            connection.Close();
-        }
-
         private void CheckConnection()
         {
             if (connection.State != ConnectionState.Open)
@@ -53,6 +45,7 @@ namespace DatabaseConnection        // Class used to execute commands and connec
                 CreateConnection();
             }
         }
+
 
         #endregion Connection Managment
 
@@ -78,9 +71,9 @@ namespace DatabaseConnection        // Class used to execute commands and connec
 
                 return adapter.Update(tblName);
             }
-            catch (Exception ex)
+            finally
             {
-                throw ex;
+                connection.Close();
             }
         }
 
@@ -98,9 +91,9 @@ namespace DatabaseConnection        // Class used to execute commands and connec
                 adapter = new SqlDataAdapter(command);
                 adapter.Fill(tblName);
             }
-            catch (Exception ex)
+            finally
             {
-                throw ex;
+                connection.Close();
             }
         }
 
@@ -121,9 +114,9 @@ namespace DatabaseConnection        // Class used to execute commands and connec
                 reader = command.ExecuteReader();
                 return reader;
             }
-            catch (Exception ex)
+            finally
             {
-                throw ex;
+                connection.Close();
             }
         }
 
@@ -139,9 +132,9 @@ namespace DatabaseConnection        // Class used to execute commands and connec
 
                 return dbCommand.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            finally
             {
-                throw ex;
+                connection.Close();
             }
         }
 
