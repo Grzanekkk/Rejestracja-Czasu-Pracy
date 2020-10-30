@@ -174,7 +174,7 @@ namespace DatabaseConnection
 
         public void StartWorking(string memberID)
         {
-            if(GetMinutesOfWorkSinceStart(memberID) > 840); // 14 godzin, sprawdzamy czy nie ma recordu z wczoraj
+            if (GetMinutesOfWorkSinceStart(memberID) > 840) // 14 godzin, sprawdzamy czy nie ma recordu z wczoraj
             {
                 DeleteLetestNullRow(memberID);
             }
