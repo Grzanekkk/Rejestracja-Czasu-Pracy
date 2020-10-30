@@ -88,7 +88,7 @@ namespace DatabaseConnection
             }
             else
             {
-                return null;    // DO ZMIANY !!!!!!!!!!!!!!!!!!
+                return null;  
             }
         }
     }

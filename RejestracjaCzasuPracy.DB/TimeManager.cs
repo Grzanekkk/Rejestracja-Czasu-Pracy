@@ -16,7 +16,7 @@ namespace DatabaseConnection
                 $"values(@EventID, @Date, @Minutes, @MemberID, @BreakTime)");
 
             insertCommand.Parameters.AddWithValue("@EventID", Guid.NewGuid());
-            insertCommand.Parameters.AddWithValue("@Date", DateTime.Now);
+            insertCommand.Parameters.AddWithValue("@Date", Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss")));
             insertCommand.Parameters.AddWithValue("@MemberID", memberID);
             insertCommand.Parameters.AddWithValue("@BreakTime", 0);
 
@@ -101,7 +101,7 @@ namespace DatabaseConnection
             }
 
             foreach (DataRow row in summaryTable.Rows)
-            {
+            { 
                 for (int n = 0; n < usersTabel.Rows.Count; n++)
                     if (row["MemberID"].ToString() == usersTabel.Rows[n]["MemberID"].ToString())
                     {
@@ -120,7 +120,21 @@ namespace DatabaseConnection
 
             dbAccess.ReadDataThroughAdapter(query, dataTable);
 
-            return dataTable;
+            DataTable date = dataTable.Clone();
+            date.Columns["Date"].DataType = typeof(string);
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+               date.ImportRow(row);
+            }
+
+            int i = 0;
+            foreach (DataRow row in date.Rows)
+            {
+                row["Date"] = Convert.ToDateTime(dataTable.Rows[i]["Date"]).ToString("dd-MM-yyyy HH:mm:ss");
+            }
+
+            return date;
         }
 
 
